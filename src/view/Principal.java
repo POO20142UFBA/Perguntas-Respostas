@@ -52,20 +52,14 @@ public class Principal extends JFrame {
 		
 		
 		setJMenuBar(menuBar);
-		
 		menuBar.add(mnArquivo);
 		mntmSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
-		
 		mnArquivo.add(mntmSair);
-		
-
 		menuBar.add(mnAjuda);
-		
-		
 		mnAjuda.add(mntmVerso);
 		
 		contentPane = new JPanel();
