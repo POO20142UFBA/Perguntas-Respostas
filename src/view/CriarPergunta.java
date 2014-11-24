@@ -72,7 +72,7 @@ public class CriarPergunta extends JFrame {
 	 */
 	public CriarPergunta() {
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\Documents\\workspace\\PergEResp\\PergEResp.jpg"));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage("PergEResp.jpg"));
 		setTitle("Perguntas e Respostas");		
 		setJMenuBar(menuBar);
 		menuBar.add(mnArquivo);

@@ -45,7 +45,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\Documents\\workspace\\PergEResp\\PergEResp.jpg"));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\Documents\\workspace\\PergEResp\\PergEResp.jpg"));
 		setTitle("Perguntas e Respostas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);

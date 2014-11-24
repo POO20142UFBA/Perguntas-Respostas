@@ -43,7 +43,7 @@ public class Menu extends JFrame {
 	 */
 	public Menu() {
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\Documents\\workspace\\PergEResp\\PergEResp.jpg"));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\Documents\\workspace\\PergEResp\\PergEResp.jpg"));
 		setTitle("Perguntas e Respostas");		
 		setJMenuBar(menuBar);
 		menuBar.add(mnArquivo);
