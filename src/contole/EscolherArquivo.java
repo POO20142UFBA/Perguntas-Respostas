@@ -135,11 +135,33 @@ public class EscolherArquivo{
 		
 		// Se selecionou o arquivo, retorna o endereço + nome + extenção do arquivo.
 		if(retorno == JFileChooser.APPROVE_OPTION){
-			caminhoArquivo = chooser.getSelectedFile().getAbsolutePath().concat("."+TipoArquivo);
+			caminhoArquivo = chooser.getSelectedFile().getAbsolutePath();
+			
+			if(caminhoArquivo.length() < 5 || !VerificaExtencao(caminhoArquivo)){
+				caminhoArquivo = chooser.getSelectedFile().getAbsolutePath().concat("."+TipoArquivo);
+			}			
+		}
+
+		return caminhoArquivo;
+	}
+
+	
+	public boolean VerificaExtencao(String caminhoArquivo){
+		// Verifica se Foi digitado ou selecionado um arquivo com extencao.
+		char recebe = ' ';
+		String extencao = "";
+		String oi = "";
+		for(int i = caminhoArquivo.length() - 5; i < caminhoArquivo.length(); i++){
+			recebe = caminhoArquivo.charAt(i);
+			oi = String.valueOf(recebe);
+			extencao = extencao + oi;
 		}
 		
-		return caminhoArquivo;
-
+		if(extencao.equals(".prpg") || extencao.equals(".prqt") || extencao.equals(".prrs")){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 }
