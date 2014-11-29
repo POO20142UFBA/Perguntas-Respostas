@@ -1,6 +1,5 @@
 package contole;
 
-import java.util.ArrayList;
 import java.util.*;
 
 public class Pergunta {
@@ -34,8 +33,14 @@ public class Pergunta {
 	public void setdata(Date value){
 		data = value;
 	}
-		
-/* Falta get e set alternativas. */
+	
+	public ArrayList<Alternativa> getAlternativas(){
+		return (ArrayList<Alternativa>) alternativas;
+	}
+
+	public void setAlternativas(ArrayList<Alternativa> value){
+		alternativas = value;
+	}
 	
 // ---> Métodos <--- \\	
 	

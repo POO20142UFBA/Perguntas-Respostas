@@ -164,4 +164,11 @@ public class EscolherArquivo{
 		}
 	}
 	
+	public boolean Salvar(){
+		
+		
+		return false;
+		
+	}
+	
 }

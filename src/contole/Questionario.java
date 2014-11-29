@@ -8,7 +8,7 @@ public class Questionario {
 	private String nomeAutor;
 	private String nomeQuestionario;
 	private Date data;
-	private List<Pergunta> pergunta = new ArrayList<Pergunta>();
+	private List<Pergunta> perguntas = new ArrayList<Pergunta>();
 
 	public Questionario() {
 	}
@@ -37,7 +37,13 @@ public class Questionario {
 		data = value;
 	}
 	
-	/* Falta get e set alternativas. */
+	public ArrayList<Pergunta> getPerguntas(){
+		return (ArrayList<Pergunta>) perguntas;
+	}
+
+	public void setPerguntas(ArrayList<Pergunta> value){
+		perguntas = value;
+	}
 
 	// ---> Métodos <--- \\
 
