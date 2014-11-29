@@ -34,6 +34,10 @@ import javax.swing.JTextField;
 import modelo.EscolherArquivo;
 
 import java.awt.Button;
+import java.awt.GridLayout;
+import java.awt.CardLayout;
+import java.awt.Window.Type;
+import javax.swing.border.BevelBorder;
 
 public class TelaPrincipal extends JFrame {
 
@@ -49,12 +53,12 @@ public class TelaPrincipal extends JFrame {
 	private final JPanel pnResponderQuestionario = new JPanel();
 	private final JPanel panel_3 = new JPanel();
 	private final TextArea textArea_5 = new TextArea();
-	private final JLabel lblNewLabel = new JLabel("A)");
-	private final JLabel lblB = new JLabel("B)");
-	private final JLabel lblC = new JLabel("C)");
-	private final JLabel lblD = new JLabel("D)");
-	private final JLabel lblE = new JLabel("E)");
-	private final JLabel lblNewLabel_1 = new JLabel("<html>Resposta<br/>Correta</html>");
+	private final JLabel lblNewLabel = new JLabel("a)");
+	private final JLabel lblB = new JLabel("b)");
+	private final JLabel lblC = new JLabel("c)");
+	private final JLabel lblD = new JLabel("d)");
+	private final JLabel lblE = new JLabel("e)");
+	private final JLabel lblNewLabel_1 = new JLabel("Resposta Correta");
 	private final JRadioButton rbA = new JRadioButton("");
 	private final JRadioButton rbB = new JRadioButton("");
 	private final JRadioButton rbC = new JRadioButton("");
@@ -86,6 +90,9 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		setResizable(false);
+		setTitle("Perguntas e Respostas");
+		menuBar.setToolTipText("");
 		
 		
 		setJMenuBar(menuBar);
@@ -100,88 +107,89 @@ public class TelaPrincipal extends JFrame {
 		mnAjuda.add(mntmVerso);		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1024, 768);
+		setBounds(100, 100, 873, 632);
 		contentPane = new JPanel();
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		tabbedPane.setLayout(new BorderLayout());
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		tabbedPane.setBounds(0, 0, 998, 709);
 		contentPane.add(tabbedPane);
+		pnCriarPergunta.setBorder(null);
 		
 		tabbedPane.addTab("Criar Pergunta", null, pnCriarPergunta, null);
+		tabbedPane.setEnabledAt(0, true);
 		pnCriarPergunta.setLayout(null);
 		
 		JLabel lblPergunta = new JLabel("Pergunta:");
-		lblPergunta.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPergunta.setBounds(26, 3, 68, 27);
+		lblPergunta.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPergunta.setBounds(26, 3, 121, 27);
 		pnCriarPergunta.add(lblPergunta);
 		
 		TextArea textArea_1 = new TextArea();
-		textArea_1.setBounds(22, 36, 946, 102);
+		textArea_1.setBounds(22, 36, 772, 69);
 		pnCriarPergunta.add(textArea_1);
 		
 		TextArea textArea = new TextArea();
-		textArea.setBounds(128, 188, 840, 69);
+		textArea.setBounds(69, 139, 356, 69);
 		pnCriarPergunta.add(textArea);
 		
 		TextArea textArea_2 = new TextArea();
-		textArea_2.setBounds(128, 276, 840, 69);
+		textArea_2.setBounds(69, 214, 356, 69);
 		pnCriarPergunta.add(textArea_2);
 		
 		TextArea textArea_3 = new TextArea();
-		textArea_3.setBounds(128, 453, 840, 69);
+		textArea_3.setBounds(69, 364, 356, 69);
 		pnCriarPergunta.add(textArea_3);
 		
 		TextArea textArea_4 = new TextArea();
-		textArea_4.setBounds(128, 367, 840, 69);
+		textArea_4.setBounds(69, 289, 356, 69);
 		pnCriarPergunta.add(textArea_4);
-		textArea_5.setBounds(128, 539, 840, 69);
+		textArea_5.setBounds(69, 439, 356, 69);
 		
 		pnCriarPergunta.add(textArea_5);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(26, 188, 25, 34);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setBounds(26, 139, 25, 34);
 		
 		pnCriarPergunta.add(lblNewLabel);
-		lblB.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblB.setBounds(26, 276, 25, 34);
+		lblB.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblB.setBounds(26, 214, 25, 34);
 		
 		pnCriarPergunta.add(lblB);
-		lblC.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblC.setBounds(26, 367, 25, 34);
+		lblC.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblC.setBounds(26, 289, 25, 34);
 		
 		pnCriarPergunta.add(lblC);
-		lblD.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblD.setBounds(26, 453, 25, 34);
+		lblD.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblD.setBounds(26, 364, 25, 34);
 		
 		pnCriarPergunta.add(lblD);
-		lblE.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblE.setBounds(26, 539, 25, 34);
+		lblE.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblE.setBounds(26, 439, 25, 34);
 		
 		pnCriarPergunta.add(lblE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(57, 157, 55, 27);
+		lblNewLabel_1.setBounds(385, 106, 130, 27);
 		
 		pnCriarPergunta.add(lblNewLabel_1);
 		
 		
-		rbA.setBounds(73, 201, 21, 21);
+		rbA.setBounds(448, 161, 21, 21);
 		pnCriarPergunta.add(rbA);
-		rbB.setBounds(73, 289, 21, 21);
+		rbB.setBounds(448, 237, 21, 21);
 		
 		pnCriarPergunta.add(rbB);
-		rbD.setBounds(73, 466, 21, 21);
+		rbD.setBounds(448, 387, 21, 21);
 		
 		pnCriarPergunta.add(rbD);
-		rbC.setBounds(73, 378, 21, 21);
+		rbC.setBounds(448, 317, 21, 21);
 		
 		pnCriarPergunta.add(rbC);
-		rbE.setBounds(73, 552, 21, 21);
+		rbE.setBounds(448, 452, 21, 21);
 		
 		pnCriarPergunta.add(rbE);
 		
@@ -191,31 +199,47 @@ public class TelaPrincipal extends JFrame {
 		group.add(rbC);
 		group.add(rbD);
 		group.add(rbE);
-		lblNomeAutorPergunta.setBounds(128, 626, 73, 27);
+		lblNomeAutorPergunta.setBounds(556, 111, 73, 21);
 		
 		pnCriarPergunta.add(lblNomeAutorPergunta);
-		lblemailAutorPergunta.setBounds(491, 626, 68, 27);
+		lblemailAutorPergunta.setBounds(556, 170, 68, 20);
 		
 		pnCriarPergunta.add(lblemailAutorPergunta);
 		
 		tfNomeAutorPergunta = new JTextField();
-		tfNomeAutorPergunta.setBounds(210, 626, 238, 20);
+		tfNomeAutorPergunta.setBounds(556, 139, 238, 20);
 		pnCriarPergunta.add(tfNomeAutorPergunta);
 		tfNomeAutorPergunta.setColumns(10);
 		
 		tfEmailAutorPergunta = new JTextField();
 		tfEmailAutorPergunta.setColumns(10);
-		tfEmailAutorPergunta.setBounds(567, 626, 238, 20);
+		tfEmailAutorPergunta.setBounds(556, 199, 238, 20);
 		pnCriarPergunta.add(tfEmailAutorPergunta);
 		
-		Button btnSalvarPergunta = new Button("Salvar");
-		btnSalvarPergunta.setBounds(898, 631, 70, 22);
+		JButton btnSalvarPergunta = new JButton("Salvar");
+		btnSalvarPergunta.setBounds(702, 467, 92, 41);
 		pnCriarPergunta.add(btnSalvarPergunta);
 		
 //////////////// Arrumar 
 		
-		tabbedPane.addTab("Criar Questionario", null, pnCriarQuestionario, null);
+		tabbedPane.addTab("Criar Questionário", null, pnCriarQuestionario, null);
 		pnCriarQuestionario.setLayout(null);
+		
+		
+		/*pnCriarQuestionario.add(btnAbrir);
+		
+		tfCaminho = new JTextField();
+		tfCaminho.setBounds(41, 25, 436, 20);
+		pnCriarQuestionario.add(tfCaminho);
+		tfCaminho.setColumns(10);*/
+		
+		JTextArea taTeste = new JTextArea();
+		taTeste.setBounds(55, 169, 536, 299);
+		pnCriarQuestionario.add(taTeste);
+		
+		tabbedPane.addTab("Responder Questionário", null, pnResponderQuestionario, null);
+		pnResponderQuestionario.setLayout(null);
+		
 		btnAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EscolherArquivo ea = new EscolherArquivo();
@@ -224,20 +248,12 @@ public class TelaPrincipal extends JFrame {
 				
 			}
 		});
-		btnAbrir.setBounds(422, 56, 55, 23);
-		
-		pnCriarQuestionario.add(btnAbrir);
+		btnAbrir.setBounds(383, 56, 94, 23);
 		
 		tfCaminho = new JTextField();
 		tfCaminho.setBounds(41, 25, 436, 20);
-		pnCriarQuestionario.add(tfCaminho);
+		pnResponderQuestionario.add(tfCaminho);
 		tfCaminho.setColumns(10);
-		
-		JTextArea taTeste = new JTextArea();
-		taTeste.setBounds(55, 169, 536, 299);
-		pnCriarQuestionario.add(taTeste);
-		tabbedPane.addTab("Responder Questionario", null, pnResponderQuestionario, null);
-		
-		tabbedPane.addTab("New tab", null, panel_3, null);
+		pnResponderQuestionario.add(btnAbrir);
 	}
 }
