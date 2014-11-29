@@ -30,6 +30,9 @@ import javax.swing.DropMode;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+
+import modelo.EscolherArquivo;
+
 import java.awt.Button;
 
 public class TelaPrincipal extends JFrame {
@@ -61,6 +64,8 @@ public class TelaPrincipal extends JFrame {
 	private final JLabel lblemailAutorPergunta = new JLabel("Email Autor:");
 	private JTextField tfNomeAutorPergunta;
 	private JTextField tfEmailAutorPergunta;
+	private final JButton btnAbrir = new JButton("Abrir");
+	private JTextField tfCaminho;
 	/**
 	 * Launch the application.
 	 */
@@ -207,9 +212,30 @@ public class TelaPrincipal extends JFrame {
 		btnSalvarPergunta.setBounds(898, 631, 70, 22);
 		pnCriarPergunta.add(btnSalvarPergunta);
 		
-		
+//////////////// Arrumar 
 		
 		tabbedPane.addTab("Criar Questionario", null, pnCriarQuestionario, null);
+		pnCriarQuestionario.setLayout(null);
+		btnAbrir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EscolherArquivo ea = new EscolherArquivo();
+				tfCaminho.setText(ea.buscarArquivoSalvar("prrs"));
+				
+				
+			}
+		});
+		btnAbrir.setBounds(422, 56, 55, 23);
+		
+		pnCriarQuestionario.add(btnAbrir);
+		
+		tfCaminho = new JTextField();
+		tfCaminho.setBounds(41, 25, 436, 20);
+		pnCriarQuestionario.add(tfCaminho);
+		tfCaminho.setColumns(10);
+		
+		JTextArea taTeste = new JTextArea();
+		taTeste.setBounds(55, 169, 536, 299);
+		pnCriarQuestionario.add(taTeste);
 		tabbedPane.addTab("Responder Questionario", null, pnResponderQuestionario, null);
 		
 		tabbedPane.addTab("New tab", null, panel_3, null);

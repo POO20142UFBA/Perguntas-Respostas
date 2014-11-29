@@ -1,4 +1,4 @@
-package contole;
+package modelo;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ public class Resposta {
 	private String nomeAutor;
 	private String emailAutor;
 	private Date data;
-	//private String NomeQuestionario; -> Pensando bem, acho que não precisa gravar o nome do questionário vamos saber o nome pela instancia do Questionario.
+	
 	
 	public Resposta() {
 		// TODO Auto-generated constructor stub

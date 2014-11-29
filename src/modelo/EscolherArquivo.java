@@ -1,10 +1,13 @@
-package contole;
+package modelo;
 
 import java.io.BufferedReader;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 
 //Retorna o endereço com o nome do arquivo para salvar.
@@ -164,7 +167,11 @@ public class EscolherArquivo{
 		}
 	}
 	
-	public boolean Salvar(){
+	public boolean SalvarPergunta(Pergunta value){
+		
+		XStream xstream = new XStream(new DomDriver());
+		
+		xstream.toXML(value);
 		
 		
 		return false;

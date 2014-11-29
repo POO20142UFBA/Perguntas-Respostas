@@ -1,4 +1,4 @@
-package contole;
+package modelo;
 
 import java.util.*;
 
@@ -45,6 +45,7 @@ public class Pergunta {
 // ---> Métodos <--- \\	
 	
 	public Pergunta() {
+
 	}
 
 	public boolean criarArqPerguntas(){
