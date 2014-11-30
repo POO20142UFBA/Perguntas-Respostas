@@ -1,10 +1,12 @@
-package modelo;
+package controle;
 
 import java.io.BufferedReader;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import modelo.Pergunta;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -140,7 +142,7 @@ public class EscolherArquivo{
 		if(retorno == JFileChooser.APPROVE_OPTION){
 			caminhoArquivo = chooser.getSelectedFile().getAbsolutePath();
 			
-			if(caminhoArquivo.length() < 5 || !VerificaExtencao(caminhoArquivo)){
+			if(caminhoArquivo.length() < 5 || !VerificaExtensao(caminhoArquivo)){
 				caminhoArquivo = chooser.getSelectedFile().getAbsolutePath().concat("."+TipoArquivo);
 			}			
 		}
@@ -149,18 +151,18 @@ public class EscolherArquivo{
 	}
 
 	
-	public boolean VerificaExtencao(String caminhoArquivo){
+	public boolean VerificaExtensao(String caminhoArquivo){
 		// Verifica se Foi digitado ou selecionado um arquivo com extencao.
 		char recebe = ' ';
-		String extencao = "";
+		String extensao = "";
 		String oi = "";
 		for(int i = caminhoArquivo.length() - 5; i < caminhoArquivo.length(); i++){
 			recebe = caminhoArquivo.charAt(i);
 			oi = String.valueOf(recebe);
-			extencao = extencao + oi;
+			extensao = extensao + oi;
 		}
 		
-		if(extencao.equals(".prpg") || extencao.equals(".prqt") || extencao.equals(".prrs")){
+		if(extensao.equals(".prpg") || extensao.equals(".prqt") || extensao.equals(".prrs")){
 			return true;
 		}else{
 			return false;

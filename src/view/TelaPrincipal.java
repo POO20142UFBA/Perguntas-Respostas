@@ -31,13 +31,18 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
-import modelo.EscolherArquivo;
-
 import java.awt.Button;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import java.awt.Window.Type;
+
 import javax.swing.border.BevelBorder;
+
+import controle.EscolherArquivo;
+import javax.swing.JCheckBox;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JSplitPane;
 
 public class TelaPrincipal extends JFrame {
 
@@ -68,7 +73,7 @@ public class TelaPrincipal extends JFrame {
 	private final JLabel lblemailAutorPergunta = new JLabel("Email Autor:");
 	private JTextField tfNomeAutorPergunta;
 	private JTextField tfEmailAutorPergunta;
-	private final JButton btnAbrir = new JButton("Abrir");
+	private final JButton btnSalvar = new JButton("Salvar");
 	private JTextField tfCaminho;
 	/**
 	 * Launch the application.
@@ -217,6 +222,11 @@ public class TelaPrincipal extends JFrame {
 		pnCriarPergunta.add(tfEmailAutorPergunta);
 		
 		JButton btnSalvarPergunta = new JButton("Salvar");
+		btnSalvarPergunta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnSalvarPergunta.setBounds(702, 467, 92, 41);
 		pnCriarPergunta.add(btnSalvarPergunta);
 		
@@ -226,21 +236,21 @@ public class TelaPrincipal extends JFrame {
 		pnCriarQuestionario.setLayout(null);
 		
 		
-		/*pnCriarQuestionario.add(btnAbrir);
+		pnCriarQuestionario.add(btnSalvar);
 		
 		tfCaminho = new JTextField();
-		tfCaminho.setBounds(41, 25, 436, 20);
+		tfCaminho.setBounds(181, 479, 436, 20);
 		pnCriarQuestionario.add(tfCaminho);
-		tfCaminho.setColumns(10);*/
+		tfCaminho.setColumns(10);
 		
 		JTextArea taTeste = new JTextArea();
-		taTeste.setBounds(55, 169, 536, 299);
+		taTeste.setBounds(67, 140, 334, 103);
 		pnCriarQuestionario.add(taTeste);
 		
-		tabbedPane.addTab("Responder Questionário", null, pnResponderQuestionario, null);
+		tabbedPane.addTab("Responder Question\u00E1rio", null, pnResponderQuestionario, null);
 		pnResponderQuestionario.setLayout(null);
 		
-		btnAbrir.addActionListener(new ActionListener() {
+		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EscolherArquivo ea = new EscolherArquivo();
 				tfCaminho.setText(ea.buscarArquivoSalvar("prrs"));
@@ -248,12 +258,6 @@ public class TelaPrincipal extends JFrame {
 				
 			}
 		});
-		btnAbrir.setBounds(383, 56, 94, 23);
-		
-		tfCaminho = new JTextField();
-		tfCaminho.setBounds(41, 25, 436, 20);
-		pnResponderQuestionario.add(tfCaminho);
-		tfCaminho.setColumns(10);
-		pnResponderQuestionario.add(btnAbrir);
+		btnSalvar.setBounds(685, 478, 94, 23);
 	}
 }

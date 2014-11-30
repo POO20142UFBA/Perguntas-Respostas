@@ -1,5 +1,10 @@
 package modelo;
 
+import javax.swing.*;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.io.File;
 import java.util.*;
 
 public class Questionario {
@@ -49,6 +54,7 @@ public class Questionario {
 
 	public boolean criarArqQuestionario(){
 		
+				
 		return true;
 	}
 
@@ -64,6 +70,9 @@ public class Questionario {
 	}
 
 	public boolean selecionarPerguntaManualmente(){
+		
+		
+		
 		
 		return true;
 	}
