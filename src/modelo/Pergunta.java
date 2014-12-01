@@ -1,13 +1,13 @@
 package modelo;
 
+import java.io.*;  
 import java.util.*;
 
 public class Pergunta {
 	private String enunciado;
-	private String tema;
-	private String nomeAutor;
-	private List<Alternativa> alternativas = new ArrayList<Alternativa>();
-	private Date data = new Date();
+	private String alternativaCorreta;	
+	private List<Alternativa> alternativasFalsas = new ArrayList<Alternativa>();
+	
 
 	public String getEnunciado(){
 		return this.enunciado;
@@ -15,57 +15,24 @@ public class Pergunta {
 	public void setEnunciado(String value){
 		this.enunciado = value;
 	}	
-	public String getTema(){
-		return this.tema;
-	}
-	public void setTema(String value){
-		this.tema = value;
-	}		
-	public String getNomeAutor(){
-		return this.nomeAutor;
-	}
-	public void setNomeAutor(String value){
-		this.nomeAutor = value;
-	}			
-	public Date getdata(){
-		return this.data;
-	}
-	public void setdata(Date value){
-		data = value;
-	}
 	
 	public ArrayList<Alternativa> getAlternativas(){
-		return (ArrayList<Alternativa>) alternativas;
+		return (ArrayList<Alternativa>) alternativasFalsas;
 	}
 
 	public void setAlternativas(ArrayList<Alternativa> value){
-		alternativas = value;
+		alternativasFalsas = value;
 	}
 	
-// ---> Métodos <--- \\	
+	public String getAlternativaCorreta() {
+		return alternativaCorreta;
+	}
+	public void setAlternativaCorreta(String alternativaCorreta) {
+		this.alternativaCorreta = alternativaCorreta;
+	}
 	
-	public Pergunta() {
-
-	}
-
-	public boolean criarArqPerguntas(){
-		
-		return true;
-	}
-
-	public Pergunta abrirArqPergunta(){
-		
-		Pergunta pergunta = new Pergunta();
-		return pergunta;
-	}
-
-	public boolean salvarArqPergunta(){
-		
-		return true;
-	}
-
-	public boolean addPergunta(){
-		
+	public boolean addPergunta(){		
+		  
 		return true;
 	}
 }
