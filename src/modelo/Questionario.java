@@ -9,38 +9,42 @@ import java.util.*;
 
 public class Questionario {
 
-	private int tempoRespostaEmSeg;
-	private String nomeAutor;
-	private String nomeQuestionario;
-	private Date data;
-	private List<Pergunta> perguntas = new ArrayList<Pergunta>();
+//	private int tempoRespostaEmSeg;
+//	private String nomeAutor;
+//	private String nomeQuestionario;
+//	private Date data;
+	private List<Pergunta> perguntas;
 
 	public Questionario() {
+	
 	}
-	public int getTempoRespostaEmSeg(){
-		return this.tempoRespostaEmSeg;
+	public Questionario(Pergunta value) {
+		perguntas.add(value);
 	}
-	public void setTempoRespostaEmSeg(int value){
-		this.tempoRespostaEmSeg = value;
-	}	
-	public String getNomeAutor(){
-		return this.nomeAutor;
-	}
-	public void setNomeAutor(String value){
-		this.nomeAutor = value;
-	}
-	public String getNomeQuestionario(){
-		return this.nomeQuestionario;
-	}
-	public void setNomeQuestionario(String value){
-		this.nomeQuestionario = value;
-	}			
-	public Date getdata(){
-		return this.data;
-	}
-	public void setdata(Date value){
-		data = value;
-	}
+//	public int getTempoRespostaEmSeg(){
+//		return this.tempoRespostaEmSeg;
+//	}
+//	public void setTempoRespostaEmSeg(int value){
+//		this.tempoRespostaEmSeg = value;
+//	}	
+//	public String getNomeAutor(){
+//		return this.nomeAutor;
+//	}
+//	public void setNomeAutor(String value){
+//		this.nomeAutor = value;
+//	}
+//	public String getNomeQuestionario(){
+//		return this.nomeQuestionario;
+//	}
+//	public void setNomeQuestionario(String value){
+//		this.nomeQuestionario = value;
+//	}			
+//	public Date getdata(){
+//		return this.data;
+//	}
+//	public void setdata(Date value){
+//		data = value;
+//	}
 	
 	public ArrayList<Pergunta> getPerguntas(){
 		return (ArrayList<Pergunta>) perguntas;
@@ -65,6 +69,7 @@ public class Questionario {
 	}
 
 	public boolean selecionarPerguntaAleatoria(){
+		
 		
 		return true;
 	}

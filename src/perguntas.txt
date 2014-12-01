@@ -1,0 +1,2 @@
+<pergunta>perg<repostaCorreta>a1<falsa1>a2<falsa2>a3<falsa3>a4<falsa4>a5<falsa5>
+<pergunta>banana<repostaCorreta>pera<falsa1>uva<falsa2>maca<falsa3>sal<falsa4>mist<falsa5>

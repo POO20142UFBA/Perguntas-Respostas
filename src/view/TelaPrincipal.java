@@ -34,7 +34,8 @@ import javax.swing.JTextField;
 import java.awt.Button;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
-import java.awt.Window.Type;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.border.BevelBorder;
 
@@ -45,6 +46,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JSplitPane;
 
+import modelo.Alternativa;
 import modelo.Pergunta;
 
 public class TelaPrincipal extends JFrame {
@@ -56,15 +58,28 @@ public class TelaPrincipal extends JFrame {
 	private JMenu mnAjuda = new JMenu("Ajuda");
 	private JMenuItem mntmVerso = new JMenuItem("Vers\u00E3o");
 	private final JPanel pnCriarPergunta = new JPanel();
-	private final JPanel pnCriarQuestionario = new JPanel();
-	private final TextArea textAreaAltFalsa4 = new TextArea();
+	private final JLabel lblPergunta = new JLabel("Pergunta:");
+	private final TextArea textAreaPergunta = new TextArea();
 	private final JLabel lblAltCorreta = new JLabel("Alternativa Correta");
+	private final TextArea textAreaAltCorreta = new TextArea();
 	private final JLabel lblAltFalsa1 = new JLabel("Alternativa Falsa 1");
+	private final TextArea textAreaAltFalsa1 = new TextArea();
 	private final JLabel lblAltFalsa2 = new JLabel("Alternativa Falsa 2");
+	private final TextArea textAreaAltFalsa2 = new TextArea();
 	private final JLabel lblAltFalsa3 = new JLabel("Alternativa Falsa 3");
+	private final TextArea textAreaAltFalsa3 = new TextArea();
 	private final JLabel lblAltFalsa4 = new JLabel("Alternativa Falsa 4");
+	private final TextArea textAreaAltFalsa4 = new TextArea();
+	private ArrayList<Alternativa> alternativasFalsas = new ArrayList<Alternativa>();
 	private final JButton btnSalvar = new JButton("Salvar");
-	private JTextField tfCaminho;
+	
+	private final JPanel pnCriarQuestionario = new JPanel();
+	private final JLabel respA = new JLabel("");
+	private final JLabel respB = new JLabel("");
+	private final JLabel respD = new JLabel("");
+	private final JLabel respC = new JLabel("");
+	private final JLabel respE = new JLabel("");
+	
 	/**
 	 * Launch the application.
 	 */
@@ -116,37 +131,40 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(tabbedPane);
 		pnCriarPergunta.setBorder(null);
 		
+		
+		//Aba Criar Pergunta
 		tabbedPane.addTab("Criar Pergunta", null, pnCriarPergunta, null);
 		tabbedPane.setEnabledAt(0, true);
 		
 		pnCriarPergunta.setLayout(null);
 		
-		JLabel lblPergunta = new JLabel("Pergunta:");
+		
 		lblPergunta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPergunta.setBounds(26, 3, 121, 27);
 		pnCriarPergunta.add(lblPergunta);
-		final TextArea textAreaPergunta = new TextArea();
+		
 		textAreaPergunta.setBounds(22, 36, 772, 69);
 		pnCriarPergunta.add(textAreaPergunta);
 		
-		final TextArea textAreaAltCorreta = new TextArea();
+		
 		textAreaAltCorreta.setBounds(216, 139, 356, 69);
 		pnCriarPergunta.add(textAreaAltCorreta);
 		
-		TextArea textAreaAltFalsa1 = new TextArea();
+		
 		textAreaAltFalsa1.setBounds(216, 214, 356, 69);
 		pnCriarPergunta.add(textAreaAltFalsa1);
 		
-		TextArea textAreaAltFalsa3 = new TextArea();
+		
 		textAreaAltFalsa3.setBounds(216, 364, 356, 69);
 		pnCriarPergunta.add(textAreaAltFalsa3);
 		
-		TextArea textAreaAltFalsa2 = new TextArea();
+		
 		textAreaAltFalsa2.setBounds(216, 289, 356, 69);
 		pnCriarPergunta.add(textAreaAltFalsa2);
-		textAreaAltFalsa4.setBounds(216, 439, 356, 69);
 		
+		textAreaAltFalsa4.setBounds(216, 439, 356, 69);
 		pnCriarPergunta.add(textAreaAltFalsa4);
+		
 		lblAltCorreta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblAltCorreta.setBounds(26, 139, 151, 34);
 		
@@ -171,23 +189,39 @@ public class TelaPrincipal extends JFrame {
 		JButton btnSalvarPergunta = new JButton("Salvar");
 		btnSalvarPergunta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				Pergunta pergunta = new Pergunta(
+						textAreaPergunta.getText(),
+						textAreaAltCorreta.getText(),
+						textAreaAltFalsa1.getText(),
+						textAreaAltFalsa2.getText(),
+						textAreaAltFalsa3.getText(),
+						textAreaAltFalsa4.getText()
+						);	
 				
-				Pergunta pergunta = new Pergunta();
-				pergunta.setEnunciado(textAreaPergunta.getText());
-				pergunta.setAlternativaCorreta(textAreaAltCorreta.getText());
+
+				// AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIiiiiiiiiiiiiiiii....
 				
-				
-				
-				/*String questionSave = textAreaPergunta.getText();
-				String correctAnswerSave = textAreaAltCorreta.getText();
-				
-				textAreaPergunta.setText(questionSave);
-				textAreaAltCorreta.setText(correctAnswerSave);*/
+
+//				String questionSave = textAreaPergunta.getText();
+//				String correctAnswerSave = textAreaAltCorreta.getText();
+//				
+//				textAreaPergunta.setText(questionSave);
+//				textAreaAltCorreta.setText(correctAnswerSave);
 				
 				Arquivo arquivo = new Arquivo();
-				arquivo.addPergunta(pergunta);
-				
-				
+				try {
+					arquivo.addPergunta(pergunta);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				textAreaPergunta.setText(null);
+				textAreaAltCorreta.setText(null);
+				textAreaAltFalsa1.setText(null);
+				textAreaAltFalsa2.setText(null);
+				textAreaAltFalsa3.setText(null);
+				textAreaAltFalsa4.setText(null);
 				
 			}
 		});
@@ -196,17 +230,57 @@ public class TelaPrincipal extends JFrame {
 		
 		
 		
-		
-		
-/*//////////////// Arrumar 
-		
-		tabbedPane.addTab("Criar Questionário", null, pnCriarQuestionario, null);
+		//Aba Criar Questionario		
+		tabbedPane.addTab("Criar Questionario", null, pnCriarQuestionario, null);
 		pnCriarQuestionario.setLayout(null);
 		
 		
 		pnCriarQuestionario.add(btnSalvar);
 		
-		tfCaminho = new JTextField();
+		JLabel lblEnunciado = new JLabel("");
+		lblEnunciado.setBounds(26, 27, 790, 78);
+		pnCriarQuestionario.add(lblEnunciado);
+		respA.setBounds(77, 170, 705, 14);
+		
+		pnCriarQuestionario.add(respA);
+		respB.setBounds(77, 211, 705, 14);
+		
+		pnCriarQuestionario.add(respB);
+		respD.setBounds(77, 295, 705, 14);
+		
+		pnCriarQuestionario.add(respD);
+		respC.setBounds(77, 254, 705, 14);
+		
+		pnCriarQuestionario.add(respC);
+		respE.setBounds(77, 343, 705, 14);
+		
+		pnCriarQuestionario.add(respE);
+		
+		JButton btnProxima = new JButton("Proxima");
+		btnProxima.setBounds(716, 420, 89, 23);
+		pnCriarQuestionario.add(btnProxima);
+		
+		JLabel lblA = new JLabel("a");
+		lblA.setBounds(10, 170, 46, 14);
+		pnCriarQuestionario.add(lblA);
+		
+		JLabel lblB = new JLabel("b");
+		lblB.setBounds(10, 211, 46, 14);
+		pnCriarQuestionario.add(lblB);
+		
+		JLabel lblD = new JLabel("d");
+		lblD.setBounds(10, 295, 46, 14);
+		pnCriarQuestionario.add(lblD);
+		
+		JLabel lblC = new JLabel("c");
+		lblC.setBounds(10, 254, 46, 14);
+		pnCriarQuestionario.add(lblC);
+		
+		JLabel lblE = new JLabel("e");
+		lblE.setBounds(10, 343, 46, 14);
+		pnCriarQuestionario.add(lblE);
+		
+		/*tfCaminho = new JTextField();
 		tfCaminho.setBounds(181, 479, 436, 20);
 		pnCriarQuestionario.add(tfCaminho);
 		tfCaminho.setColumns(10);
