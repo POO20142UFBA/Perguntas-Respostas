@@ -16,7 +16,6 @@ public class Resolucao {
 	
 	
 	public Resolucao() {
-		// TODO Auto-generated constructor stub
 	}
 	public int getTempoTotalResolucaoaEmSeg(){
 		return this.tempoTotalResolucaoEmSeg;

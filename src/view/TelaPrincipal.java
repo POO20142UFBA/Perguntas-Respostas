@@ -211,9 +211,8 @@ public class TelaPrincipal extends JFrame {
 				
 				Arquivo arquivo = new Arquivo();
 				try {
-					arquivo.addPergunta(pergunta);
+					arquivo.salvarArquivoPergunta(pergunta);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				textAreaPergunta.setText(null);

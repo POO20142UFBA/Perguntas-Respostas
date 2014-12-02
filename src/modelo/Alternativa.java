@@ -34,5 +34,4 @@ public class Alternativa {
 		
 		return alternativa;
 	}
-	
 }

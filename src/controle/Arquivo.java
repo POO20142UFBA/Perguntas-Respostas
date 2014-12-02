@@ -20,27 +20,16 @@ import view.TelaPrincipal;
 import modelo.Alternativa;
 import modelo.Pergunta;
 
-
-
-
-//Retorna o endereco com o nome do arquivo para salvar.
 public class Arquivo{
-	private BufferedWriter bw;
+	
+	private BufferedWriter bw = null;
 	private BufferedReader fr = null;
-	public void addPergunta(Pergunta pergunta) throws IOException{
+	
+	public void salvarArquivoPergunta(Pergunta pergunta) throws IOException{
 		
 		try{
-			int i = 2;
 			String perguntaCompleta = null;
-			//StringBuilder PerguntaCompleta = new StringBuilder();
-//			StringBuilder demaisAlternativas = new StringBuilder();
-//			for (Alternativa alternativa : pergunta.getAlternativas()) {
-//				demaisAlternativas.append(alternativa.toString() + "<falsa"+i+">");
-//				i++;
-//			}
-//
-//			String s = "<pergunta>"+ pergunta.getEnunciado().toString() + "<repostaCorreta>" + pergunta.getAlternativaCorreta().toString() + "<falsa1>" + demaisAlternativas.toString();
-//				
+			
 			perguntaCompleta = "<pergunta>"+pergunta.getEnunciado()
 					+"<repostaCorreta>"+pergunta.getAlternativas().get(0).getAlternativa().toString()
 					+"<falsa1>"+pergunta.getAlternativas().get(1).getAlternativa().toString()
@@ -60,12 +49,12 @@ public class Arquivo{
 		}catch(Exception e){ 
 			System.out.println("Exception Caught : " +e.getMessage());
 		}finally{
-			lerPergunta();
+			lerArquivoPergunta();
 		}
 	} 
 	
-	public void lerPergunta() throws IOException{
-		int c;
+	public void lerArquivoPergunta() throws IOException{
+
 		int inicio=0;
 		int fim=0;
 		String linha;
@@ -82,7 +71,7 @@ public class Arquivo{
 		fr = new BufferedReader(new FileReader("perguntas.txt"));
 		
         while ((linha = fr.readLine()) != null) {
-        	//linha = fr.readLine();
+
         	fim = linha.indexOf("<repostaCorreta>");
         	perg = linha.substring(10, fim);
         	
@@ -109,21 +98,8 @@ public class Arquivo{
 
         	listPergunta.add(new Pergunta(perg, a1, a2, a3, a4, a5));
 
-//        	System.out.println("<pergunta123>"+pergunta.getEnunciado()
-//					+"<repostaCorreta>"+pergunta.getAlternativas().get(0).getAlternativa().toString()
-//					+"<falsa1>"+pergunta.getAlternativas().get(1).getAlternativa().toString()
-//					+"<falsa2>"+pergunta.getAlternativas().get(2).getAlternativa().toString()
-//					+"<falsa3>"+pergunta.getAlternativas().get(3).getAlternativa().toString()
-//					+"<falsa4>"+pergunta.getAlternativas().get(4).getAlternativa().toString()
-//					+"<falsa5>");
         }
-        
-        System.out.println("oi");
-        
 		
 	}
-		
 
 }
-
-	
