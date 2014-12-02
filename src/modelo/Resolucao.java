@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Resolucao {
-
 	private int tempoTotalResolucaoEmSeg;
 	private String nomeAutor;
 	private String emailAutor;

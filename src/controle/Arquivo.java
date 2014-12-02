@@ -2,20 +2,12 @@ package controle;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import view.TelaPrincipal;
 import modelo.Alternativa;
 import modelo.Pergunta;
@@ -66,7 +58,6 @@ public class Arquivo{
 		String a5;
 		
 		List<Pergunta> listPergunta = new ArrayList<Pergunta>();
-		
 		
 		fr = new BufferedReader(new FileReader("perguntas.txt"));
 		

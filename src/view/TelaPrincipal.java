@@ -292,8 +292,6 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Arquivo ea = new Arquivo();
 				tfCaminho.setText(ea.buscarArquivoSalvar("prrs"));
-				
-				
 			}
 		});
 		btnSalvar.setBounds(685, 478, 94, 23);*/

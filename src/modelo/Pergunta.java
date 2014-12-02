@@ -5,7 +5,6 @@ import java.util.*;
 public class Pergunta {
 	private String enunciado;
 	private List<Alternativa> alternativas = new ArrayList<Alternativa>();
-	
 	public Pergunta(){
 		
 	}

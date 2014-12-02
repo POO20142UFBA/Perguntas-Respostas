@@ -8,7 +8,6 @@ import java.io.File;
 import java.util.*;
 
 public class Questionario {
-
 //	private int tempoRespostaEmSeg;
 //	private String nomeAutor;
 //	private String nomeQuestionario;

@@ -4,7 +4,6 @@ public class Alternativa {
 	
 	private String alternativa;
 	private boolean ehCorreta = false;
-
 	public Alternativa(){
 	}
 	public Alternativa(String a){

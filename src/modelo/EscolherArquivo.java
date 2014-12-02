@@ -7,7 +7,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 //Retorna o endereço com o nome do arquivo para salvar.
 public class EscolherArquivo{
-	
 	public EscolherArquivo(){
 		
 	}
