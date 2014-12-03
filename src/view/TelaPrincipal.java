@@ -60,7 +60,7 @@ public class TelaPrincipal extends JFrame {
 	private final JLabel lblPergunta = new JLabel("Pergunta:");
 	private final TextArea textAreaPergunta = new TextArea();
 	private final JLabel lblAltCorreta = new JLabel("Alternativa Correta");
-	private final TextArea textAreaAltCorreta = new TextArea();
+	private final JTextArea textAreaAltCorreta = new JTextArea();
 	private final JLabel lblAltFalsa1 = new JLabel("Alternativa Falsa 1");
 	private final TextArea textAreaAltFalsa1 = new TextArea();
 	private final JLabel lblAltFalsa2 = new JLabel("Alternativa Falsa 2");
@@ -71,14 +71,10 @@ public class TelaPrincipal extends JFrame {
 	private final TextArea textAreaAltFalsa4 = new TextArea();
 	private ArrayList<Alternativa> alternativasFalsas = new ArrayList<Alternativa>();
 	private final JButton btnSalvar = new JButton("Salvar");
-	private final JButton btnProximo = new JButton("Proximo");
+	private final JButton btnProximaQuestao = new JButton("Pr\u00F3xima");
 	
 	private final JPanel pnCriarQuestionario = new JPanel();
-	private final JLabel lblRespA = new JLabel("");
-	private final JLabel lblRespB = new JLabel("");
-	private final JLabel lblRespD = new JLabel("");
-	private final JLabel lblRespC = new JLabel("");
-	private final JLabel lblRespE = new JLabel("");
+	private final JButton btnSalvarQuestionario = new JButton("Concluir");
 	
 	/**
 	 * Launch the application.
@@ -145,6 +141,10 @@ public class TelaPrincipal extends JFrame {
 		
 		textAreaPergunta.setBounds(22, 36, 772, 69);
 		pnCriarPergunta.add(textAreaPergunta);
+		textAreaAltCorreta.setSelectionEnd(50);
+		textAreaAltCorreta.setText("wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik wsapsapdok pwoie kfm  eifu lkjf ewklj  r porwi lsdjf lioj  opiesiu ,.e wrpoiew ,ofpg ma pd gm.n p\u00F3et kmh pgfo hlkjpiug yamn,m\\\u00E7odgr popoifroky poiry opirpoi rpik");
+		textAreaAltCorreta.setLineWrap(true);
+		textAreaAltCorreta.setWrapStyleWord(true);
 		
 		
 		textAreaAltCorreta.setBounds(216, 139, 356, 69);
@@ -220,60 +220,20 @@ public class TelaPrincipal extends JFrame {
 		
 		
 		//Aba Criar Questionario		
-		tabbedPane.addTab("Criar Questionario", null, pnCriarQuestionario, null);
+		tabbedPane.addTab("Criar Question\u00E1rio", null, pnCriarQuestionario, null);
 		pnCriarQuestionario.setLayout(null);
 		
 		
 		pnCriarQuestionario.add(btnSalvar);
 		
-		JLabel lblEnunciado = new JLabel("");
-		lblEnunciado.setBounds(26, 27, 790, 78);
-		pnCriarQuestionario.add(lblEnunciado);
-		lblRespA.setBounds(77, 170, 705, 14);
-		
-		pnCriarQuestionario.add(lblRespA);
-		lblRespB.setBounds(77, 211, 705, 14);
-		
-		pnCriarQuestionario.add(lblRespB);
-		lblRespD.setBounds(77, 295, 705, 14);
-		
-		pnCriarQuestionario.add(lblRespD);
-		lblRespC.setBounds(77, 254, 705, 14);
-		
-		pnCriarQuestionario.add(lblRespC);
-		lblRespE.setBounds(77, 343, 705, 14);
-		
-		pnCriarQuestionario.add(lblRespE);
+		final JLabel lblQuestao = new JLabel("Quest\u00E3o");
+		lblQuestao.setBounds(40, 115, 661, 342);
+		pnCriarQuestionario.add(lblQuestao);
 		
 
 
-		btnProximo.setBounds(716, 420, 89, 23);
-		pnCriarQuestionario.add(btnProximo);
-		
-		JLabel lblA = new JLabel("a");
-		lblA.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblA.setBounds(10, 170, 46, 14);
-		pnCriarQuestionario.add(lblA);
-		
-		JLabel lblB = new JLabel("b");
-		lblB.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblB.setBounds(10, 211, 46, 14);
-		pnCriarQuestionario.add(lblB);
-		
-		JLabel lblD = new JLabel("d");
-		lblD.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblD.setBounds(10, 295, 46, 14);
-		pnCriarQuestionario.add(lblD);
-		
-		JLabel lblC = new JLabel("c");
-		lblC.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblC.setBounds(10, 254, 46, 14);
-		pnCriarQuestionario.add(lblC);
-		
-		JLabel lblE = new JLabel("e");
-		lblE.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblE.setBounds(10, 343, 46, 14);
-		pnCriarQuestionario.add(lblE);
+		btnProximaQuestao.setBounds(702, 360, 89, 23);
+		pnCriarQuestionario.add(btnProximaQuestao);
 		
 		JButton btnAbrirPerguntas = new JButton("Abrir Perguntas");
 		btnAbrirPerguntas.addActionListener(new ActionListener() {
@@ -281,7 +241,7 @@ public class TelaPrincipal extends JFrame {
 				Arquivo arquivo = new Arquivo();
 				List<Pergunta> listPergunta = new ArrayList<Pergunta>();
 				
-				btnProximo.addActionListener(new ActionListener() {
+				btnProximaQuestao.addActionListener(new ActionListener() {
 					
 					public boolean actionPerformed() {
 						 return true;
@@ -297,7 +257,7 @@ public class TelaPrincipal extends JFrame {
 					listPergunta = arquivo.lerArquivoPergunta();
 					
 					for (Pergunta pergunta : listPergunta) {
-						lblEnunciado.setText(pergunta.getEnunciado().toString());
+						lblQuestao.setText(pergunta.getEnunciado().toString());
 					}
 					
 					
@@ -313,8 +273,19 @@ public class TelaPrincipal extends JFrame {
 				}
 			}
 		});
-		btnAbrirPerguntas.setBounds(560, 420, 125, 23);
+		btnAbrirPerguntas.setBounds(26, 48, 125, 23);
 		pnCriarQuestionario.add(btnAbrirPerguntas);
+		
+		JButton btnAddQuestao = new JButton("Adicionar");
+		btnAddQuestao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAddQuestao.setBounds(702, 170, 89, 23);
+		pnCriarQuestionario.add(btnAddQuestao);
+		btnSalvarQuestionario.setBounds(702, 467, 92, 41);
+		
+		pnCriarQuestionario.add(btnSalvarQuestionario);
 		
 		/*tfCaminho = new JTextField();
 		tfCaminho.setBounds(181, 479, 436, 20);
