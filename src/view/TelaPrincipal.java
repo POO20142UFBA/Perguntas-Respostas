@@ -36,17 +36,16 @@ import java.awt.GridLayout;
 import java.awt.CardLayout;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.border.BevelBorder;
-
-import controle.Arquivo;
-
 import javax.swing.JCheckBox;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JSplitPane;
 
 import modelo.Alternativa;
+import modelo.Arquivo;
 import modelo.Pergunta;
 
 public class TelaPrincipal extends JFrame {
@@ -72,13 +71,14 @@ public class TelaPrincipal extends JFrame {
 	private final TextArea textAreaAltFalsa4 = new TextArea();
 	private ArrayList<Alternativa> alternativasFalsas = new ArrayList<Alternativa>();
 	private final JButton btnSalvar = new JButton("Salvar");
+	private final JButton btnProximo = new JButton("Proximo");
 	
 	private final JPanel pnCriarQuestionario = new JPanel();
-	private final JLabel respA = new JLabel("");
-	private final JLabel respB = new JLabel("");
-	private final JLabel respD = new JLabel("");
-	private final JLabel respC = new JLabel("");
-	private final JLabel respE = new JLabel("");
+	private final JLabel lblRespA = new JLabel("");
+	private final JLabel lblRespB = new JLabel("");
+	private final JLabel lblRespD = new JLabel("");
+	private final JLabel lblRespC = new JLabel("");
+	private final JLabel lblRespE = new JLabel("");
 	
 	/**
 	 * Launch the application.
@@ -198,17 +198,7 @@ public class TelaPrincipal extends JFrame {
 						textAreaAltFalsa3.getText(),
 						textAreaAltFalsa4.getText()
 						);	
-				
 
-				// AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIiiiiiiiiiiiiiiii....
-				
-
-//				String questionSave = textAreaPergunta.getText();
-//				String correctAnswerSave = textAreaAltCorreta.getText();
-//				
-//				textAreaPergunta.setText(questionSave);
-//				textAreaAltCorreta.setText(correctAnswerSave);
-				
 				Arquivo arquivo = new Arquivo();
 				try {
 					arquivo.salvarArquivoPergunta(pergunta);
@@ -239,45 +229,92 @@ public class TelaPrincipal extends JFrame {
 		JLabel lblEnunciado = new JLabel("");
 		lblEnunciado.setBounds(26, 27, 790, 78);
 		pnCriarQuestionario.add(lblEnunciado);
-		respA.setBounds(77, 170, 705, 14);
+		lblRespA.setBounds(77, 170, 705, 14);
 		
-		pnCriarQuestionario.add(respA);
-		respB.setBounds(77, 211, 705, 14);
+		pnCriarQuestionario.add(lblRespA);
+		lblRespB.setBounds(77, 211, 705, 14);
 		
-		pnCriarQuestionario.add(respB);
-		respD.setBounds(77, 295, 705, 14);
+		pnCriarQuestionario.add(lblRespB);
+		lblRespD.setBounds(77, 295, 705, 14);
 		
-		pnCriarQuestionario.add(respD);
-		respC.setBounds(77, 254, 705, 14);
+		pnCriarQuestionario.add(lblRespD);
+		lblRespC.setBounds(77, 254, 705, 14);
 		
-		pnCriarQuestionario.add(respC);
-		respE.setBounds(77, 343, 705, 14);
+		pnCriarQuestionario.add(lblRespC);
+		lblRespE.setBounds(77, 343, 705, 14);
 		
-		pnCriarQuestionario.add(respE);
+		pnCriarQuestionario.add(lblRespE);
 		
-		JButton btnProxima = new JButton("Proxima");
-		btnProxima.setBounds(716, 420, 89, 23);
-		pnCriarQuestionario.add(btnProxima);
+
+
+		btnProximo.setBounds(716, 420, 89, 23);
+		pnCriarQuestionario.add(btnProximo);
 		
 		JLabel lblA = new JLabel("a");
+		lblA.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblA.setBounds(10, 170, 46, 14);
 		pnCriarQuestionario.add(lblA);
 		
 		JLabel lblB = new JLabel("b");
+		lblB.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblB.setBounds(10, 211, 46, 14);
 		pnCriarQuestionario.add(lblB);
 		
 		JLabel lblD = new JLabel("d");
+		lblD.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblD.setBounds(10, 295, 46, 14);
 		pnCriarQuestionario.add(lblD);
 		
 		JLabel lblC = new JLabel("c");
+		lblC.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblC.setBounds(10, 254, 46, 14);
 		pnCriarQuestionario.add(lblC);
 		
 		JLabel lblE = new JLabel("e");
+		lblE.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblE.setBounds(10, 343, 46, 14);
 		pnCriarQuestionario.add(lblE);
+		
+		JButton btnAbrirPerguntas = new JButton("Abrir Perguntas");
+		btnAbrirPerguntas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Arquivo arquivo = new Arquivo();
+				List<Pergunta> listPergunta = new ArrayList<Pergunta>();
+				
+				btnProximo.addActionListener(new ActionListener() {
+					
+					public boolean actionPerformed() {
+						 return true;
+					}
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});				
+				try {
+					listPergunta = arquivo.lerArquivoPergunta();
+					
+					for (Pergunta pergunta : listPergunta) {
+						lblEnunciado.setText(pergunta.getEnunciado().toString());
+					}
+					
+					
+					
+					
+					
+					
+				} catch (IOException e1) {
+
+					e1.printStackTrace();
+				} finally{
+					System.out.println("oi");
+				}
+			}
+		});
+		btnAbrirPerguntas.setBounds(560, 420, 125, 23);
+		pnCriarQuestionario.add(btnAbrirPerguntas);
 		
 		/*tfCaminho = new JTextField();
 		tfCaminho.setBounds(181, 479, 436, 20);

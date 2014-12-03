@@ -1,4 +1,4 @@
-package controle;
+package modelo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,12 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import view.TelaPrincipal;
-import modelo.Alternativa;
-import modelo.Pergunta;
 
-public class Arquivo{
+import javax.swing.JOptionPane;
+
+import view.TelaPrincipal;
+
+public class Arquivo extends EscolherArquivo{
 	
 	private BufferedWriter bw = null;
 	private BufferedReader fr = null;
@@ -30,8 +30,7 @@ public class Arquivo{
 					+"<falsa4>"+pergunta.getAlternativas().get(4).getAlternativa().toString()
 					+"<falsa5>";
 			
-			bw = new BufferedWriter(new FileWriter("perguntas.txt", true));  
-			
+			bw = new BufferedWriter(new FileWriter(buscarArquivoSalvar("prpg"), true));  
 			bw.write(perguntaCompleta);
 			bw.newLine();
 			bw.flush();
@@ -41,11 +40,11 @@ public class Arquivo{
 		}catch(Exception e){ 
 			System.out.println("Exception Caught : " +e.getMessage());
 		}finally{
-			lerArquivoPergunta();
+
 		}
 	} 
 	
-	public void lerArquivoPergunta() throws IOException{
+	public ArrayList<Pergunta> lerArquivoPergunta() throws IOException{
 
 		int inicio=0;
 		int fim=0;
@@ -56,10 +55,10 @@ public class Arquivo{
 		String a3;
 		String a4;
 		String a5;
-		
 		List<Pergunta> listPergunta = new ArrayList<Pergunta>();
+			
 		
-		fr = new BufferedReader(new FileReader("perguntas.txt"));
+		fr = new BufferedReader(new FileReader(buscarArquivoAbrir("prpg")));
 		
         while ((linha = fr.readLine()) != null) {
 
@@ -90,7 +89,7 @@ public class Arquivo{
         	listPergunta.add(new Pergunta(perg, a1, a2, a3, a4, a5));
 
         }
-		
+		return (ArrayList<Pergunta>) listPergunta;
 	}
 
 }
