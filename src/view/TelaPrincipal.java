@@ -33,6 +33,8 @@ import modelo.Pergunta;
 import modelo.Resposta;
 
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import java.awt.Dimension;
 
 
 public class TelaPrincipal extends JFrame {
@@ -60,17 +62,17 @@ public class TelaPrincipal extends JFrame {
 		
 		private final JPanel cp_pnCriarPergunta = new JPanel();
 		private final JLabel cp_lblPergunta = new JLabel("Pergunta:");
-		private final TextArea cp_textAreaPergunta = new TextArea();
+		private final JTextArea cp_textAreaPergunta = new JTextArea();
 		private final JLabel cp_lblAltCorreta = new JLabel("Alternativa Correta");
 		private final JTextArea cp_textAreaAltCorreta = new JTextArea();
 		private final JLabel cp_lblAltFalsa1 = new JLabel("Alternativa Falsa 1");
-		private final TextArea cp_textAreaAltFalsa1 = new TextArea();
+		private final JTextArea cp_textAreaAltFalsa1 = new JTextArea();
 		private final JLabel cp_lblAltFalsa2 = new JLabel("Alternativa Falsa 2");
-		private final TextArea cp_textAreaAltFalsa2 = new TextArea();
+		private final JTextArea cp_textAreaAltFalsa2 = new JTextArea();
 		private final JLabel cp_lblAltFalsa3 = new JLabel("Alternativa Falsa 3");
-		private final TextArea cp_textAreaAltFalsa3 = new TextArea();
+		private final JTextArea cp_textAreaAltFalsa3 = new JTextArea();
 		private final JLabel cp_lblAltFalsa4 = new JLabel("Alternativa Falsa 4");
-		private final TextArea cp_textAreaAltFalsa4 = new TextArea();
+		private final JTextArea cp_textAreaAltFalsa4 = new JTextArea();
 		private final JButton cp_btnSalvarPergunta = new JButton("Salvar");
 		
 	/**
@@ -85,7 +87,7 @@ public class TelaPrincipal extends JFrame {
 		private final JButton cq_btnSalvarQuestionario = new JButton("Concluir e Salvar");
 		private final JTextPane cq_textPaneExibePergunta = new JTextPane();
 		private final JButton cq_btnAbrirPerguntas = new JButton("Abrir Perguntas");
-		private final JButton cq_btnVoltar = new JButton("Voltar");
+		private final JButton cq_btnVoltar = new JButton("Anterior");
 		private final JButton cq_btnAddQuestao = new JButton("Adicionar");
 		
 	/**
@@ -111,7 +113,7 @@ public class TelaPrincipal extends JFrame {
 		private final JTextPane rp_txtpnRespE = new JTextPane();
 		private final JButton rp_btnAbrirProva = new JButton("Abrir Prova");
 		private final JButton rp_btnProxima = new JButton("Pr\u00F3xima");
-		private final JButton rp_btnVoltar = new JButton("Voltar");
+		private final JButton rp_btnVoltar = new JButton("Anterior");
 		private final JButton rp_btnSalvar = new JButton("Concluir e Salvar");
 		
 	/**
@@ -128,6 +130,19 @@ public class TelaPrincipal extends JFrame {
 		List<Resposta> listResposta = new ArrayList<Resposta>();
 		int correArrayPergunta = 0;
 		int correArrayResposta = 0;
+		private final JScrollPane scrollPane = new JScrollPane();
+		private final JScrollPane scrollPane_1 = new JScrollPane();
+		private final JScrollPane scrollPane_2 = new JScrollPane();
+		private final JScrollPane scrollPane_3 = new JScrollPane();
+		private final JScrollPane scrollPane_4 = new JScrollPane();
+		private final JScrollPane scrollPane_5 = new JScrollPane();
+		private final JScrollPane scrollPane_6 = new JScrollPane();
+		private final JScrollPane scrollPane_7 = new JScrollPane();
+		private final JScrollPane scrollPane_8 = new JScrollPane();
+		private final JScrollPane scrollPane_9 = new JScrollPane();
+		private final JScrollPane scrollPane_10 = new JScrollPane();
+		private final JScrollPane scrollPane_11 = new JScrollPane();
+		private final JScrollPane scrollPane_12 = new JScrollPane();
 	/**
 	 * 		FIM VARIAVEIS GLOBAIS
 	 */
@@ -213,27 +228,43 @@ public class TelaPrincipal extends JFrame {
 		cp_lblPergunta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		cp_lblPergunta.setBounds(26, 3, 121, 27);
 		cp_pnCriarPergunta.add(cp_lblPergunta);
+		scrollPane_1.setBounds(22, 36, 772, 69);
 		
-		cp_textAreaPergunta.setBounds(22, 36, 772, 69);
-		cp_pnCriarPergunta.add(cp_textAreaPergunta);
+		cp_pnCriarPergunta.add(scrollPane_1);
+		cp_textAreaPergunta.setWrapStyleWord(true);
+		cp_textAreaPergunta.setLineWrap(true);
+		scrollPane_1.setViewportView(cp_textAreaPergunta);
+		scrollPane.setBounds(216, 139, 356, 69);
+		
+		cp_pnCriarPergunta.add(scrollPane);
+		scrollPane.setViewportView(cp_textAreaAltCorreta);
 		cp_textAreaAltCorreta.setSelectionEnd(50);
 		cp_textAreaAltCorreta.setLineWrap(true);
 		cp_textAreaAltCorreta.setWrapStyleWord(true);
+		scrollPane_2.setBounds(216, 214, 356, 69);
 		
-		cp_textAreaAltCorreta.setBounds(216, 139, 356, 69);
-		cp_pnCriarPergunta.add(cp_textAreaAltCorreta);
+		cp_pnCriarPergunta.add(scrollPane_2);
+		scrollPane_2.setViewportView(cp_textAreaAltFalsa1);
+		cp_textAreaAltFalsa1.setWrapStyleWord(true);
+		cp_textAreaAltFalsa1.setLineWrap(true);
+		scrollPane_3.setBounds(216, 364, 356, 69);
 		
-		cp_textAreaAltFalsa1.setBounds(216, 214, 356, 69);
-		cp_pnCriarPergunta.add(cp_textAreaAltFalsa1);
+		cp_pnCriarPergunta.add(scrollPane_3);
+		scrollPane_3.setViewportView(cp_textAreaAltFalsa3);
+		cp_textAreaAltFalsa3.setWrapStyleWord(true);
+		cp_textAreaAltFalsa3.setLineWrap(true);
+		scrollPane_4.setBounds(216, 289, 356, 69);
 		
-		cp_textAreaAltFalsa3.setBounds(216, 364, 356, 69);
-		cp_pnCriarPergunta.add(cp_textAreaAltFalsa3);
+		cp_pnCriarPergunta.add(scrollPane_4);
+		scrollPane_4.setViewportView(cp_textAreaAltFalsa2);
+		cp_textAreaAltFalsa2.setWrapStyleWord(true);
+		cp_textAreaAltFalsa2.setLineWrap(true);
+		scrollPane_5.setBounds(216, 439, 356, 69);
 		
-		cp_textAreaAltFalsa2.setBounds(216, 289, 356, 69);
-		cp_pnCriarPergunta.add(cp_textAreaAltFalsa2);
-		
-		cp_textAreaAltFalsa4.setBounds(216, 439, 356, 69);
-		cp_pnCriarPergunta.add(cp_textAreaAltFalsa4);
+		cp_pnCriarPergunta.add(scrollPane_5);
+		scrollPane_5.setViewportView(cp_textAreaAltFalsa4);
+		cp_textAreaAltFalsa4.setWrapStyleWord(true);
+		cp_textAreaAltFalsa4.setLineWrap(true);
 		
 		cp_lblAltCorreta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		cp_lblAltCorreta.setBounds(26, 139, 151, 34);
@@ -266,10 +297,12 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * 		CONFIGURAÇÃO ABA CRIA QUESTIONARIO
 	 */	
+		scrollPane_6.setBounds(26, 110, 666, 332);
+		
+		cq_pnCriarQuestionario.add(scrollPane_6);
+		scrollPane_6.setViewportView(cq_textPaneExibePergunta);
 
 		cq_textPaneExibePergunta.setEditable(false);
-		cq_textPaneExibePergunta.setBounds(26, 110, 666, 332);
-		cq_pnCriarQuestionario.add(cq_textPaneExibePergunta);
 		cq_btnProximaQuestao.setBounds(702, 360, 89, 23);
 		cq_pnCriarQuestionario.add(cq_btnProximaQuestao);
 		cq_btnVoltar.setBounds(702, 394, 89, 23);
@@ -304,34 +337,46 @@ public class TelaPrincipal extends JFrame {
 		rp_btnGroup.add(rp_rdbtnRespC);
 		rp_btnGroup.add(rp_rdbtnRespD);
 		rp_btnGroup.add(rp_rdbtnRespE);
-		rp_txtpnEnunciado.setBounds(55, 59, 691, 61);
+		scrollPane_7.setBounds(55, 59, 700, 61);
 		
-		rp_pnResolverProva.add(rp_txtpnEnunciado);
-		rp_txtpnRespA.setBounds(99, 176, 647, 20);
+		rp_pnResolverProva.add(scrollPane_7);
+		rp_txtpnEnunciado.setEditable(false);
+		scrollPane_7.setViewportView(rp_txtpnEnunciado);
+		scrollPane_8.setBounds(99, 176, 656, 34);
 		
-		rp_pnResolverProva.add(rp_txtpnRespA);
-		rp_txtpnRespB.setBounds(99, 220, 647, 20);
+		rp_pnResolverProva.add(scrollPane_8);
+		rp_txtpnRespA.setEditable(false);
+		scrollPane_8.setViewportView(rp_txtpnRespA);
+		scrollPane_9.setBounds(99, 220, 656, 34);
 		
-		rp_pnResolverProva.add(rp_txtpnRespB);
-		rp_txtpnRespD.setBounds(99, 307, 647, 20);
+		rp_pnResolverProva.add(scrollPane_9);
+		rp_txtpnRespB.setEditable(false);
+		scrollPane_9.setViewportView(rp_txtpnRespB);
+		scrollPane_11.setBounds(99, 307, 656, 34);
 		
-		rp_pnResolverProva.add(rp_txtpnRespD);
-		rp_txtpnRespC.setBounds(99, 263, 647, 20);
+		rp_pnResolverProva.add(scrollPane_11);
+		rp_txtpnRespD.setEditable(false);
+		scrollPane_11.setViewportView(rp_txtpnRespD);
+		scrollPane_10.setBounds(99, 263, 656, 34);
 		
-		rp_pnResolverProva.add(rp_txtpnRespC);
-		rp_txtpnRespE.setBounds(99, 356, 647, 20);
+		rp_pnResolverProva.add(scrollPane_10);
+		rp_txtpnRespC.setEditable(false);
+		scrollPane_10.setViewportView(rp_txtpnRespC);
+		scrollPane_12.setBounds(99, 356, 656, 34);
 		
-		rp_pnResolverProva.add(rp_txtpnRespE);
-		rp_btnAbrirProva.setBounds(39, 11, 89, 23);
+		rp_pnResolverProva.add(scrollPane_12);
+		rp_txtpnRespE.setEditable(false);
+		scrollPane_12.setViewportView(rp_txtpnRespE);
+		rp_btnAbrirProva.setBounds(39, 11, 107, 23);
 		
 		rp_pnResolverProva.add(rp_btnAbrirProva);
 
 		rp_btnProxima.setBounds(477, 423, 89, 23);
 		rp_pnResolverProva.add(rp_btnProxima);
-		rp_btnVoltar.setBounds(175, 423, 89, 23);
+		rp_btnVoltar.setBounds(331, 423, 89, 23);
 		
 		rp_pnResolverProva.add(rp_btnVoltar);
-		rp_btnSalvar.setBounds(151, 11, 113, 23);
+		rp_btnSalvar.setBounds(663, 467, 131, 41);
 		
 		rp_pnResolverProva.add(rp_btnSalvar);
 		
