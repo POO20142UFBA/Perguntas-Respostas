@@ -519,6 +519,7 @@ public class TelaPrincipal extends JFrame {
 
 				if(listPergunta.size() > 0 && !listQuestionario.contains(listPergunta.get(correArrayPergunta))){
 					listQuestionario.add(listPergunta.get(correArrayPergunta));
+					JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");
 				}
 			}
 		});

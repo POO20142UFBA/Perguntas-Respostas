@@ -38,10 +38,10 @@ public class Arquivo extends EscolherArquivo{
 			bw.newLine();
 			bw.flush();
 			bw.close(); 
-			JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+			JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
 			
 		}catch(Exception e){ 
-			System.out.println("Exception Caught : " +e.getMessage());
+			JOptionPane.showMessageDialog(null, "Exception Caught : " +e.getMessage());
 		}finally{
 
 		}
@@ -132,10 +132,10 @@ public class Arquivo extends EscolherArquivo{
 
 			bw.flush();
 			bw.close(); 
-			JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+			JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
 			
 		}catch(Exception e){ 
-			System.out.println("Exception Caught : " +e.getMessage());
+			JOptionPane.showMessageDialog(null, "Exception Caught : " +e.getMessage());
 		}finally{
 
 		}
