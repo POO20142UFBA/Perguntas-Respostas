@@ -46,7 +46,7 @@ abstract class EscolherArquivo{
             	chooser.addChoosableFileFilter(filtro);
             	break;
             }
-            case "prpt": 
+            case "prqt": 
             {
             	FileNameExtensionFilter filtro = new FileNameExtensionFilter("Arquivo Tipo Questionário", "prqt");
             	chooser.addChoosableFileFilter(filtro);
@@ -111,7 +111,7 @@ abstract class EscolherArquivo{
             	chooser.addChoosableFileFilter(filtro);
             	break;
             }
-            case "prpt": 
+            case "prqt": 
             {
             	FileNameExtensionFilter filtro = new FileNameExtensionFilter("Arquivo Tipo Questionário", "prqt");
             	chooser.addChoosableFileFilter(filtro);
