@@ -391,29 +391,31 @@ public class TelaPrincipal extends JFrame {
 		// Salva a Pergunta no Arquivo
 		cp_btnSalvarPergunta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(cp_textAreaPergunta.getText().trim().equals("") || cp_textAreaAltCorreta.getText().trim().equals("")){
+					JOptionPane.showMessageDialog(null,"Informe pelo menos a pergunta e a resposta correta.");
+				}else{
+					Pergunta pergunta = new Pergunta(
+							cp_textAreaPergunta.getText(),
+							cp_textAreaAltCorreta.getText(),
+							cp_textAreaAltFalsa1.getText(),
+							cp_textAreaAltFalsa2.getText(),
+							cp_textAreaAltFalsa3.getText(),
+							cp_textAreaAltFalsa4.getText()
+							);	
 
-				Pergunta pergunta = new Pergunta(
-						cp_textAreaPergunta.getText(),
-						cp_textAreaAltCorreta.getText(),
-						cp_textAreaAltFalsa1.getText(),
-						cp_textAreaAltFalsa2.getText(),
-						cp_textAreaAltFalsa3.getText(),
-						cp_textAreaAltFalsa4.getText()
-						);	
-
-				Arquivo arquivo = new Arquivo();
-				try {
-					arquivo.salvarArquivoPergunta(pergunta);
-				} catch (IOException e1) {
-					e1.printStackTrace();
+					Arquivo arquivo = new Arquivo();
+					try {
+						arquivo.salvarArquivoPergunta(pergunta);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					cp_textAreaPergunta.setText(null);
+					cp_textAreaAltCorreta.setText(null);
+					cp_textAreaAltFalsa1.setText(null);
+					cp_textAreaAltFalsa2.setText(null);
+					cp_textAreaAltFalsa3.setText(null);
+					cp_textAreaAltFalsa4.setText(null);
 				}
-				cp_textAreaPergunta.setText(null);
-				cp_textAreaAltCorreta.setText(null);
-				cp_textAreaAltFalsa1.setText(null);
-				cp_textAreaAltFalsa2.setText(null);
-				cp_textAreaAltFalsa3.setText(null);
-				cp_textAreaAltFalsa4.setText(null);
-				
 			}
 		});
 
@@ -528,7 +530,14 @@ public class TelaPrincipal extends JFrame {
 		cq_btnSalvarQuestionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					arquivo.salvarArquivoQuestionario(listQuestionario);
+					//if()
+					if(listQuestionario.size() > 0){
+						arquivo.salvarArquivoQuestionario(listQuestionario);
+						cq_textPaneExibePergunta.setText("");	
+					}else{
+						JOptionPane.showMessageDialog(null,"Adicione alguma pergunta no Questionário.");
+					}
+				
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
