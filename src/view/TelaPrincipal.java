@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Alternativa;
 import modelo.Arquivo;
 import modelo.Pergunta;
 import modelo.Resposta;

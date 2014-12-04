@@ -11,8 +11,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import view.TelaPrincipal;
-
 public class Arquivo extends EscolherArquivo{
 	
 	private BufferedWriter bw = null;
