@@ -22,7 +22,6 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
-import java.awt.TextArea;
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ import modelo.Resposta;
 
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import java.awt.Dimension;
 
 
 public class TelaPrincipal extends JFrame {
@@ -74,6 +72,13 @@ public class TelaPrincipal extends JFrame {
 		private final JLabel cp_lblAltFalsa4 = new JLabel("Alternativa Falsa 4");
 		private final JTextArea cp_textAreaAltFalsa4 = new JTextArea();
 		private final JButton cp_btnSalvarPergunta = new JButton("Salvar");
+		private final JScrollPane cp_sptextAreaAltCorreta = new JScrollPane();
+		private final JScrollPane cp_spTextAreaPergunta = new JScrollPane();
+		private final JScrollPane cp_sptextAreaAltFalsa1 = new JScrollPane();
+		private final JScrollPane cp_sptextAreaAltFalsa3 = new JScrollPane();
+		private final JScrollPane cp_sptextAreaAltFalsa2 = new JScrollPane();
+		private final JScrollPane cp_sptextAreaAltFalsa4 = new JScrollPane();
+		
 		
 	/**
 	 * 		FIM DOS OBJETOS DA ABA "CRIAR PERGUNTA"
@@ -89,6 +94,7 @@ public class TelaPrincipal extends JFrame {
 		private final JButton cq_btnAbrirPerguntas = new JButton("Abrir Perguntas");
 		private final JButton cq_btnVoltar = new JButton("Anterior");
 		private final JButton cq_btnAddQuestao = new JButton("Adicionar");
+		private final JScrollPane cq_sptextPaneExibePergunta = new JScrollPane();
 		
 	/**
 	 * 		FIM DOS OBJETOS DO  ABA "CRIAR QUESTIONARIO"
@@ -115,6 +121,12 @@ public class TelaPrincipal extends JFrame {
 		private final JButton rp_btnProxima = new JButton("Pr\u00F3xima");
 		private final JButton rp_btnVoltar = new JButton("Anterior");
 		private final JButton rp_btnSalvar = new JButton("Concluir e Salvar");
+		private final JScrollPane rp_sptxtpnEnunciado = new JScrollPane();
+		private final JScrollPane rp_sptxtpnRespA = new JScrollPane();
+		private final JScrollPane rp_sptxtpnRespB = new JScrollPane();
+		private final JScrollPane rp_sptxtpnRespC = new JScrollPane();
+		private final JScrollPane rp_sptxtpnRespD = new JScrollPane();
+		private final JScrollPane rp_sptxtpnRespE = new JScrollPane();
 		
 	/**
 	 * 		FIM DOS OBJETOS DO ABA "RESOLVER PROVA"
@@ -128,21 +140,12 @@ public class TelaPrincipal extends JFrame {
 		List<Pergunta> listPergunta = new ArrayList<Pergunta>();
 		List<Pergunta> listQuestionario = new ArrayList<Pergunta>();
 		List<Resposta> listResposta = new ArrayList<Resposta>();
+		List<JRadioButton> listRadioButton = new ArrayList<JRadioButton>();
+		
 		int correArrayPergunta = 0;
 		int correArrayResposta = 0;
-		private final JScrollPane scrollPane = new JScrollPane();
-		private final JScrollPane scrollPane_1 = new JScrollPane();
-		private final JScrollPane scrollPane_2 = new JScrollPane();
-		private final JScrollPane scrollPane_3 = new JScrollPane();
-		private final JScrollPane scrollPane_4 = new JScrollPane();
-		private final JScrollPane scrollPane_5 = new JScrollPane();
-		private final JScrollPane scrollPane_6 = new JScrollPane();
-		private final JScrollPane scrollPane_7 = new JScrollPane();
-		private final JScrollPane scrollPane_8 = new JScrollPane();
-		private final JScrollPane scrollPane_9 = new JScrollPane();
-		private final JScrollPane scrollPane_10 = new JScrollPane();
-		private final JScrollPane scrollPane_11 = new JScrollPane();
-		private final JScrollPane scrollPane_12 = new JScrollPane();
+
+
 	/**
 	 * 		FIM VARIAVEIS GLOBAIS
 	 */
@@ -228,41 +231,41 @@ public class TelaPrincipal extends JFrame {
 		cp_lblPergunta.setFont(new Font("Tahoma", Font.BOLD, 15));
 		cp_lblPergunta.setBounds(26, 3, 121, 27);
 		cp_pnCriarPergunta.add(cp_lblPergunta);
-		scrollPane_1.setBounds(22, 36, 772, 69);
+		cp_spTextAreaPergunta.setBounds(22, 36, 772, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane_1);
+		cp_pnCriarPergunta.add(cp_spTextAreaPergunta);
 		cp_textAreaPergunta.setWrapStyleWord(true);
 		cp_textAreaPergunta.setLineWrap(true);
-		scrollPane_1.setViewportView(cp_textAreaPergunta);
-		scrollPane.setBounds(216, 139, 356, 69);
+		cp_spTextAreaPergunta.setViewportView(cp_textAreaPergunta);
+		cp_sptextAreaAltCorreta.setBounds(216, 139, 356, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane);
-		scrollPane.setViewportView(cp_textAreaAltCorreta);
+		cp_pnCriarPergunta.add(cp_sptextAreaAltCorreta);
+		cp_sptextAreaAltCorreta.setViewportView(cp_textAreaAltCorreta);
 		cp_textAreaAltCorreta.setSelectionEnd(50);
 		cp_textAreaAltCorreta.setLineWrap(true);
 		cp_textAreaAltCorreta.setWrapStyleWord(true);
-		scrollPane_2.setBounds(216, 214, 356, 69);
+		cp_sptextAreaAltFalsa1.setBounds(216, 214, 356, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane_2);
-		scrollPane_2.setViewportView(cp_textAreaAltFalsa1);
+		cp_pnCriarPergunta.add(cp_sptextAreaAltFalsa1);
+		cp_sptextAreaAltFalsa1.setViewportView(cp_textAreaAltFalsa1);
 		cp_textAreaAltFalsa1.setWrapStyleWord(true);
 		cp_textAreaAltFalsa1.setLineWrap(true);
-		scrollPane_3.setBounds(216, 364, 356, 69);
+		cp_sptextAreaAltFalsa3.setBounds(216, 364, 356, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane_3);
-		scrollPane_3.setViewportView(cp_textAreaAltFalsa3);
+		cp_pnCriarPergunta.add(cp_sptextAreaAltFalsa3);
+		cp_sptextAreaAltFalsa3.setViewportView(cp_textAreaAltFalsa3);
 		cp_textAreaAltFalsa3.setWrapStyleWord(true);
 		cp_textAreaAltFalsa3.setLineWrap(true);
-		scrollPane_4.setBounds(216, 289, 356, 69);
+		cp_sptextAreaAltFalsa2.setBounds(216, 289, 356, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane_4);
-		scrollPane_4.setViewportView(cp_textAreaAltFalsa2);
+		cp_pnCriarPergunta.add(cp_sptextAreaAltFalsa2);
+		cp_sptextAreaAltFalsa2.setViewportView(cp_textAreaAltFalsa2);
 		cp_textAreaAltFalsa2.setWrapStyleWord(true);
 		cp_textAreaAltFalsa2.setLineWrap(true);
-		scrollPane_5.setBounds(216, 439, 356, 69);
+		cp_sptextAreaAltFalsa4.setBounds(216, 439, 356, 69);
 		
-		cp_pnCriarPergunta.add(scrollPane_5);
-		scrollPane_5.setViewportView(cp_textAreaAltFalsa4);
+		cp_pnCriarPergunta.add(cp_sptextAreaAltFalsa4);
+		cp_sptextAreaAltFalsa4.setViewportView(cp_textAreaAltFalsa4);
 		cp_textAreaAltFalsa4.setWrapStyleWord(true);
 		cp_textAreaAltFalsa4.setLineWrap(true);
 		
@@ -297,10 +300,10 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * 		CONFIGURAÇÃO ABA CRIA QUESTIONARIO
 	 */	
-		scrollPane_6.setBounds(26, 110, 666, 332);
+		cq_sptextPaneExibePergunta.setBounds(26, 110, 666, 332);
 		
-		cq_pnCriarQuestionario.add(scrollPane_6);
-		scrollPane_6.setViewportView(cq_textPaneExibePergunta);
+		cq_pnCriarQuestionario.add(cq_sptextPaneExibePergunta);
+		cq_sptextPaneExibePergunta.setViewportView(cq_textPaneExibePergunta);
 
 		cq_textPaneExibePergunta.setEditable(false);
 		cq_btnProximaQuestao.setBounds(702, 360, 89, 23);
@@ -313,14 +316,6 @@ public class TelaPrincipal extends JFrame {
 		cq_pnCriarQuestionario.add(cq_btnAddQuestao);
 		cq_btnSalvarQuestionario.setBounds(663, 467, 131, 41);
 		cq_pnCriarQuestionario.add(cq_btnSalvarQuestionario);
-		
-	/**
-	 * 		FIM CONFIGURAÇÃO ABA CRIA QUESTIONARIO
-	 */			
-		
-	/**
-	 * 		CONFIGURAÇÃO ABA RESOLVER PROVA
-	 */	
 
 		rp_rdbtnRespA.setBounds(39, 176, 21, 23);
 		rp_pnResolverProva.add(rp_rdbtnRespA);
@@ -337,36 +332,36 @@ public class TelaPrincipal extends JFrame {
 		rp_btnGroup.add(rp_rdbtnRespC);
 		rp_btnGroup.add(rp_rdbtnRespD);
 		rp_btnGroup.add(rp_rdbtnRespE);
-		scrollPane_7.setBounds(55, 59, 700, 61);
+		rp_sptxtpnEnunciado.setBounds(55, 59, 700, 61);
 		
-		rp_pnResolverProva.add(scrollPane_7);
+		rp_pnResolverProva.add(rp_sptxtpnEnunciado);
 		rp_txtpnEnunciado.setEditable(false);
-		scrollPane_7.setViewportView(rp_txtpnEnunciado);
-		scrollPane_8.setBounds(99, 176, 656, 34);
+		rp_sptxtpnEnunciado.setViewportView(rp_txtpnEnunciado);
+		rp_sptxtpnRespA.setBounds(99, 176, 656, 34);
 		
-		rp_pnResolverProva.add(scrollPane_8);
+		rp_pnResolverProva.add(rp_sptxtpnRespA);
 		rp_txtpnRespA.setEditable(false);
-		scrollPane_8.setViewportView(rp_txtpnRespA);
-		scrollPane_9.setBounds(99, 220, 656, 34);
+		rp_sptxtpnRespA.setViewportView(rp_txtpnRespA);
+		rp_sptxtpnRespB.setBounds(99, 220, 656, 34);
 		
-		rp_pnResolverProva.add(scrollPane_9);
+		rp_pnResolverProva.add(rp_sptxtpnRespB);
 		rp_txtpnRespB.setEditable(false);
-		scrollPane_9.setViewportView(rp_txtpnRespB);
-		scrollPane_11.setBounds(99, 307, 656, 34);
+		rp_sptxtpnRespB.setViewportView(rp_txtpnRespB);
+		rp_sptxtpnRespD.setBounds(99, 307, 656, 34);
 		
-		rp_pnResolverProva.add(scrollPane_11);
+		rp_pnResolverProva.add(rp_sptxtpnRespD);
 		rp_txtpnRespD.setEditable(false);
-		scrollPane_11.setViewportView(rp_txtpnRespD);
-		scrollPane_10.setBounds(99, 263, 656, 34);
+		rp_sptxtpnRespD.setViewportView(rp_txtpnRespD);
+		rp_sptxtpnRespC.setBounds(99, 263, 656, 34);
 		
-		rp_pnResolverProva.add(scrollPane_10);
+		rp_pnResolverProva.add(rp_sptxtpnRespC);
 		rp_txtpnRespC.setEditable(false);
-		scrollPane_10.setViewportView(rp_txtpnRespC);
-		scrollPane_12.setBounds(99, 356, 656, 34);
+		rp_sptxtpnRespC.setViewportView(rp_txtpnRespC);
+		rp_sptxtpnRespE.setBounds(99, 356, 656, 34);
 		
-		rp_pnResolverProva.add(scrollPane_12);
+		rp_pnResolverProva.add(rp_sptxtpnRespE);
 		rp_txtpnRespE.setEditable(false);
-		scrollPane_12.setViewportView(rp_txtpnRespE);
+		rp_sptxtpnRespE.setViewportView(rp_txtpnRespE);
 		rp_btnAbrirProva.setBounds(39, 11, 107, 23);
 		
 		rp_pnResolverProva.add(rp_btnAbrirProva);
@@ -377,8 +372,14 @@ public class TelaPrincipal extends JFrame {
 		
 		rp_pnResolverProva.add(rp_btnVoltar);
 		rp_btnSalvar.setBounds(663, 467, 131, 41);
-		
 		rp_pnResolverProva.add(rp_btnSalvar);
+		
+		listRadioButton.add(rp_rdbtnRespA);
+		listRadioButton.add(rp_rdbtnRespB);
+		listRadioButton.add(rp_rdbtnRespC);
+		listRadioButton.add(rp_rdbtnRespD);
+		listRadioButton.add(rp_rdbtnRespE);
+
 		
 	/**
 	 * 		FIM CONFIGURAÇÃO ABA RESOLVER PROVA
@@ -442,8 +443,7 @@ public class TelaPrincipal extends JFrame {
 				}				
 
 				cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
-						"\n\n"+
-						listPergunta.get(correArrayPergunta).getEnunciado().toString()+
+						"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 						"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
 						" - "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getEhCorreta()+
 						"\nB) "+listPergunta.get(correArrayPergunta).getAlternativas().get(1).getAlternativa().toString()+
@@ -470,8 +470,7 @@ public class TelaPrincipal extends JFrame {
 				}
 
 				cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
-						"\n\n"+
-						listPergunta.get(correArrayPergunta).getEnunciado().toString()+
+						"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 						"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
 						" - "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getEhCorreta()+
 						"\nB) "+listPergunta.get(correArrayPergunta).getAlternativas().get(1).getAlternativa().toString()+
@@ -494,8 +493,7 @@ public class TelaPrincipal extends JFrame {
 					if(listPergunta.size() > 0){
 						
 						cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
-								"\n\n"+
-								listPergunta.get(correArrayPergunta).getEnunciado().toString()+
+								"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 								"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
 								" - "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getEhCorreta()+
 								"\nB) "+listPergunta.get(correArrayPergunta).getAlternativas().get(1).getAlternativa().toString()+
@@ -530,7 +528,6 @@ public class TelaPrincipal extends JFrame {
 		cq_btnSalvarQuestionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//if()
 					if(listQuestionario.size() > 0){
 						arquivo.salvarArquivoQuestionario(listQuestionario);
 						cq_textPaneExibePergunta.setText("");	
@@ -565,7 +562,7 @@ public class TelaPrincipal extends JFrame {
 							listQuestionario.get(i).getAlternativas().get(4).getAlternativa()));
 					}
 					
-					arquivo.embaralhaAlternativas(listResposta);
+				//	arquivo.embaralhaAlternativas(listResposta);                         ------------>>>>>>>>>>> TIRAR AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 					
 					if(listQuestionario.size() > 0){
 						rp_txtpnEnunciado.setText(listResposta.get(0).getEnunciado().toString());
@@ -575,7 +572,6 @@ public class TelaPrincipal extends JFrame {
 						rp_txtpnRespD.setText(listResposta.get(0).getAlternativas().get(3).getAlternativa().toString());
 						rp_txtpnRespE.setText(listResposta.get(0).getAlternativas().get(4).getAlternativa().toString());
 					}
-					System.out.println(rp_rdbtnRespA.isSelected());
 					
 				} catch (IOException e1) {
 					e1.printStackTrace();
@@ -585,42 +581,30 @@ public class TelaPrincipal extends JFrame {
 		
 		rp_btnProxima.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int jaMarcado =-1;
 				if(listResposta.size() == 0){
 					JOptionPane.showMessageDialog(null,"Abra um arquivo de prova primeiro.");
 				}else{
-
-				//se tem algum radiobutton selecionado -===>>>> CONTINUAR AQUIIIIIIIIIIIIIIIIII !!!!!
-				if(!rp_btnGroup.isSelected(null)){
-					int resp = -1;
-					if(!rp_rdbtnRespA.isEnabled()){
-						resp = 0;
-					}else{
-						if(!rp_rdbtnRespB.isEnabled()){
-							resp = 1;
-						}else{
-							if(!rp_rdbtnRespC.isEnabled()){
-								resp = 2;
-							}else{
-								if(!rp_rdbtnRespD.isEnabled()){
-									resp = 3;
-								}else{
-									if(!rp_rdbtnRespE.isEnabled()){
-										resp = 4;
-									}
-								}
-							}
-						}	
-					}
-					listResposta.get(correArrayResposta).setrespostaAlternativa(resp);
-				}
-				
-				rp_btnGroup.clearSelection();
-				System.out.println(listResposta.get(correArrayResposta).getrespostaAlternativa());
-				
 					
-				if (correArrayResposta < listResposta.size()-1){
-					correArrayResposta += 1;
-				}
+					if(!rp_btnGroup.isSelected(null)){
+						for(int i=0; i < listRadioButton.size(); i++){
+							if(listRadioButton.get(i).isSelected()){
+								listResposta.get(correArrayResposta).setrespostaAlternativa(i);
+								break;
+							}
+						}
+					}	
+					
+					if (correArrayResposta < listResposta.size()-1){
+						correArrayResposta += 1;
+					}
+					jaMarcado = listResposta.get(correArrayResposta).getrespostaAlternativa();
+					if(jaMarcado > -1 && jaMarcado < 5){
+						listRadioButton.get(jaMarcado).setSelected(true);
+					}else{
+						rp_btnGroup.clearSelection();
+					}
+
 
 					rp_txtpnEnunciado.setText(listResposta.get(correArrayResposta).getEnunciado().toString());
 					rp_txtpnRespA.setText(listResposta.get(correArrayResposta).getAlternativas().get(0).getAlternativa().toString());
@@ -634,21 +618,73 @@ public class TelaPrincipal extends JFrame {
 		
 		rp_btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int jaMarcado =-1;
 				if(listResposta.size() == 0){
 					JOptionPane.showMessageDialog(null,"Abra um arquivo de prova primeiro.");
 				}else{
-				if (correArrayResposta > 0){
-					correArrayResposta -= 1;
-				}
-				rp_txtpnEnunciado.setText(listResposta.get(correArrayResposta).getEnunciado().toString());
-				rp_txtpnRespA.setText(listResposta.get(correArrayResposta).getAlternativas().get(0).getAlternativa().toString());
-				rp_txtpnRespB.setText(listResposta.get(correArrayResposta).getAlternativas().get(1).getAlternativa().toString());
-				rp_txtpnRespC.setText(listResposta.get(correArrayResposta).getAlternativas().get(2).getAlternativa().toString());
-				rp_txtpnRespD.setText(listResposta.get(correArrayResposta).getAlternativas().get(3).getAlternativa().toString());
-				rp_txtpnRespE.setText(listResposta.get(correArrayResposta).getAlternativas().get(4).getAlternativa().toString());	
+					
+					if(!rp_btnGroup.isSelected(null)){
+						for(int i=0; i < listRadioButton.size(); i++){
+							if(listRadioButton.get(i).isSelected()){
+								listResposta.get(correArrayResposta).setrespostaAlternativa(i);
+								break;
+							}
+						}
+					}
+					if (correArrayResposta > 0){
+						correArrayResposta -= 1;
+					}
+					jaMarcado = listResposta.get(correArrayResposta).getrespostaAlternativa();
+					if(jaMarcado > -1 && jaMarcado < 5){
+						listRadioButton.get(jaMarcado).setSelected(true);
+					}else{
+						rp_btnGroup.clearSelection();
+					}
+
+					rp_txtpnEnunciado.setText(listResposta.get(correArrayResposta).getEnunciado().toString());
+					rp_txtpnRespA.setText(listResposta.get(correArrayResposta).getAlternativas().get(0).getAlternativa().toString());
+					rp_txtpnRespB.setText(listResposta.get(correArrayResposta).getAlternativas().get(1).getAlternativa().toString());
+					rp_txtpnRespC.setText(listResposta.get(correArrayResposta).getAlternativas().get(2).getAlternativa().toString());
+					rp_txtpnRespD.setText(listResposta.get(correArrayResposta).getAlternativas().get(3).getAlternativa().toString());
+					rp_txtpnRespE.setText(listResposta.get(correArrayResposta).getAlternativas().get(4).getAlternativa().toString());	
 				}
 			}
 		});
+		
+		rp_btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int letraMarcada = -1;
+				int letraCerta = -1;
+				int questoesCertas = 0;
+				if(!rp_btnGroup.isSelected(null)){
+					for(int i=0; i < listRadioButton.size(); i++){
+						if(listRadioButton.get(i).isSelected()){
+							listResposta.get(correArrayResposta).setrespostaAlternativa(i);
+							break;
+						}
+					}
+				}
+				for(int i=0; i < listResposta.size(); i++){
+					letraMarcada = listResposta.get(i).getrespostaAlternativa();
+					
+					for(int j=0; j < listResposta.get(i).getAlternativas().size(); j++ ){
+						if(listResposta.get(i).getAlternativas().get(j).getEhCorreta() == true){
+							letraCerta = j;
+						}
+					}
+					if(letraMarcada > -1 && letraMarcada < 5){
+						System.out.println("if 1");
+						if(letraMarcada == letraCerta){
+							System.out.println("if 2");
+							questoesCertas += 1;
+						}
+					}					
+				}
+				JOptionPane.showMessageDialog(null,"Você Acertou "+questoesCertas+" de "
+						+listResposta.size()+" questões.\n Sua Nota é: "+(double)questoesCertas*((double)10/listResposta.size()));
+			}
+		});
+		
 		
 	/**
 	 * 		FIM AÇÕES RESPONDER PROVA

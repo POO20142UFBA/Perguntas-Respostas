@@ -141,7 +141,6 @@ public class Arquivo extends EscolherArquivo{
 		}
 	} 
 
-
 	public ArrayList<Pergunta> lerArquivoQuestionario() throws IOException{
 	
 		int inicio=0;
