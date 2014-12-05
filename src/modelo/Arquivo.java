@@ -153,7 +153,6 @@ public class Arquivo extends EscolherArquivo{
 		String a4;
 		String a5;
 		List<Pergunta> listQuestionario = new ArrayList<Pergunta>();
-			
 		
 		fr = new BufferedReader(new FileReader(buscarArquivoAbrir("prqt")));
 		

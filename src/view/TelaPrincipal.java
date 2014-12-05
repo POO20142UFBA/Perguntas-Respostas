@@ -392,6 +392,7 @@ public class TelaPrincipal extends JFrame {
 		// Salva a Pergunta no Arquivo
 		cp_btnSalvarPergunta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Se o campo pergunta e o campo Alternativa Correta estivarem vazios, entra no if
 				if(cp_textAreaPergunta.getText().trim().equals("") || cp_textAreaAltCorreta.getText().trim().equals("")){
 					JOptionPane.showMessageDialog(null,"Informe pelo menos a pergunta e a resposta correta.");
 				}else{
@@ -441,7 +442,7 @@ public class TelaPrincipal extends JFrame {
 				if (correArrayPergunta < listPergunta.size()-1){
 					correArrayPergunta += 1;
 				}				
-
+				// Imprime Pergunta e Respostas no Textpane Exibir
 				cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
 						"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 						"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
@@ -468,7 +469,7 @@ public class TelaPrincipal extends JFrame {
 				if (correArrayPergunta > 0){
 					correArrayPergunta -= 1;
 				}
-
+				// Imprime Pergunta e Respostas no Textpane Exibir
 				cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
 						"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 						"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
@@ -492,6 +493,7 @@ public class TelaPrincipal extends JFrame {
 					listPergunta = arquivo.lerArquivoPergunta();
 					if(listPergunta.size() > 0){
 						
+						// Imprime Pergunta e Respostas no Textpane Exibir
 						cq_textPaneExibePergunta.setText("Pergunta "+correArrayPergunta+
 								"\n\n"+listPergunta.get(correArrayPergunta).getEnunciado().toString()+
 								"\n\nA) "+listPergunta.get(correArrayPergunta).getAlternativas().get(0).getAlternativa().toString()+
@@ -516,7 +518,8 @@ public class TelaPrincipal extends JFrame {
 		// Insere A pergunta escolhida (botão Adicionar) na Lista que irá gerar os Questionários.
 		cq_btnAddQuestao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				// Verifica Se a listPergunta foi Carregada para passar pra ListQuestionario
 				if(listPergunta.size() > 0 && !listQuestionario.contains(listPergunta.get(correArrayPergunta))){
 					listQuestionario.add(listPergunta.get(correArrayPergunta));
 					JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");
@@ -549,9 +552,12 @@ public class TelaPrincipal extends JFrame {
 	 * 		AÇÕES RESPONDER PROVA
 	 */		
 		
+		// Abrir A prova
 		rp_btnAbrirProva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					listResposta.clear();
+					rp_btnGroup.clearSelection();
 					listQuestionario = arquivo.lerArquivoQuestionario();
 					for(int i=0; i < listQuestionario.size(); i++){
 					listResposta.add(new Resposta(listQuestionario.get(i).getEnunciado(),
@@ -562,7 +568,7 @@ public class TelaPrincipal extends JFrame {
 							listQuestionario.get(i).getAlternativas().get(4).getAlternativa()));
 					}
 					
-				//	arquivo.embaralhaAlternativas(listResposta);                         ------------>>>>>>>>>>> TIRAR AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+					arquivo.embaralhaAlternativas(listResposta);
 					
 					if(listQuestionario.size() > 0){
 						rp_txtpnEnunciado.setText(listResposta.get(0).getEnunciado().toString());
@@ -579,6 +585,7 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		
+		// Passar pro próximo nó da listResposta
 		rp_btnProxima.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int jaMarcado =-1;
@@ -586,6 +593,7 @@ public class TelaPrincipal extends JFrame {
 					JOptionPane.showMessageDialog(null,"Abra um arquivo de prova primeiro.");
 				}else{
 					
+					// Verifica Se algum dos Radiobutton ta selecionado, para antes de mudar pra próxima pergunta, salvar a resposta escolhida no nó da listResposta
 					if(!rp_btnGroup.isSelected(null)){
 						for(int i=0; i < listRadioButton.size(); i++){
 							if(listRadioButton.get(i).isSelected()){
@@ -598,14 +606,18 @@ public class TelaPrincipal extends JFrame {
 					if (correArrayResposta < listResposta.size()-1){
 						correArrayResposta += 1;
 					}
+					// Verifica se a Pergunta já foi respondida pelo usuário
 					jaMarcado = listResposta.get(correArrayResposta).getrespostaAlternativa();
+					
+					// Se getrespostaAlternativa() retornar valor entre 0 e 4, significa que o usuário já passou por essa questão e já respondeu.
+					// Entra no If e habilita a alternativa (radioButton) escolhida pelo usuário previamente ou deixa os radioButton limpos, caso o usuário não tenha respondido ainda.
 					if(jaMarcado > -1 && jaMarcado < 5){
 						listRadioButton.get(jaMarcado).setSelected(true);
 					}else{
 						rp_btnGroup.clearSelection();
 					}
-
-
+					
+					// Imprime na tela a pergunta e respostas do próximo nó
 					rp_txtpnEnunciado.setText(listResposta.get(correArrayResposta).getEnunciado().toString());
 					rp_txtpnRespA.setText(listResposta.get(correArrayResposta).getAlternativas().get(0).getAlternativa().toString());
 					rp_txtpnRespB.setText(listResposta.get(correArrayResposta).getAlternativas().get(1).getAlternativa().toString());
@@ -616,13 +628,14 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		
+		// Passar para o nó anterior da listResposta
 		rp_btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int jaMarcado =-1;
 				if(listResposta.size() == 0){
 					JOptionPane.showMessageDialog(null,"Abra um arquivo de prova primeiro.");
 				}else{
-					
+					// Verifica Se algum dos Radiobutton ta selecionado, para antes de mudar pra pergunta anterior, salvar a resposta escolhida no nó da listResposta
 					if(!rp_btnGroup.isSelected(null)){
 						for(int i=0; i < listRadioButton.size(); i++){
 							if(listRadioButton.get(i).isSelected()){
@@ -634,13 +647,18 @@ public class TelaPrincipal extends JFrame {
 					if (correArrayResposta > 0){
 						correArrayResposta -= 1;
 					}
+					// Verifica se a Pergunta já foi respondida pelo usuário
 					jaMarcado = listResposta.get(correArrayResposta).getrespostaAlternativa();
+					
+					// Se getrespostaAlternativa() retornar valor entre 0 e 4, significa que o usuário já passou por essa questão e já respondeu.
+					// Entra no If e habilita a alternativa (radioButton) escolhida pelo usuário previamente ou deixa os radioButton limpos, caso o usuário não tenha respondido ainda.
 					if(jaMarcado > -1 && jaMarcado < 5){
 						listRadioButton.get(jaMarcado).setSelected(true);
 					}else{
 						rp_btnGroup.clearSelection();
 					}
-
+					
+					// Imprime na tela a pergunta e respostas do próximo nó
 					rp_txtpnEnunciado.setText(listResposta.get(correArrayResposta).getEnunciado().toString());
 					rp_txtpnRespA.setText(listResposta.get(correArrayResposta).getAlternativas().get(0).getAlternativa().toString());
 					rp_txtpnRespB.setText(listResposta.get(correArrayResposta).getAlternativas().get(1).getAlternativa().toString());
@@ -656,6 +674,7 @@ public class TelaPrincipal extends JFrame {
 				int letraMarcada = -1;
 				int letraCerta = -1;
 				int questoesCertas = 0;
+				// Verifica Se o usuário respondeu a última pergunta, para antes de calcular a nota, salvar a resposta escolhida no nó da listResposta
 				if(!rp_btnGroup.isSelected(null)){
 					for(int i=0; i < listRadioButton.size(); i++){
 						if(listRadioButton.get(i).isSelected()){
@@ -664,6 +683,10 @@ public class TelaPrincipal extends JFrame {
 						}
 					}
 				}
+				
+				// Verifica qual indice da listAlternativas (dentro de Pergunta) que tem a propriedade ehCorreta igual a true
+				// e compara com o indice do arrayList listRadioButton.
+				// depois que as alternativas são embaralhadas (botão abrir prova), o indice o listRadioButton que o usuario marcou será compativel com o listAlternativa que é exibido na tela, por isso dá pra fazer essa comparação sem medo de errar.
 				for(int i=0; i < listResposta.size(); i++){
 					letraMarcada = listResposta.get(i).getrespostaAlternativa();
 					
@@ -673,9 +696,7 @@ public class TelaPrincipal extends JFrame {
 						}
 					}
 					if(letraMarcada > -1 && letraMarcada < 5){
-						System.out.println("if 1");
 						if(letraMarcada == letraCerta){
-							System.out.println("if 2");
 							questoesCertas += 1;
 						}
 					}					
