@@ -38,6 +38,14 @@ import javax.swing.JScrollPane;
 public class TelaPrincipal extends JFrame {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+
+	/**
 	 * 		OBJETOS DO MENU
 	 */
 		
@@ -120,7 +128,7 @@ public class TelaPrincipal extends JFrame {
 		private final JButton rp_btnAbrirProva = new JButton("Abrir Prova");
 		private final JButton rp_btnProxima = new JButton("Pr\u00F3xima");
 		private final JButton rp_btnVoltar = new JButton("Anterior");
-		private final JButton rp_btnSalvar = new JButton("Concluir e Salvar");
+		private final JButton rp_btnSalvar = new JButton("Concluir");
 		private final JScrollPane rp_sptxtpnEnunciado = new JScrollPane();
 		private final JScrollPane rp_sptxtpnRespA = new JScrollPane();
 		private final JScrollPane rp_sptxtpnRespB = new JScrollPane();
@@ -674,35 +682,48 @@ public class TelaPrincipal extends JFrame {
 				int letraMarcada = -1;
 				int letraCerta = -1;
 				int questoesCertas = 0;
-				// Verifica Se o usuário respondeu a última pergunta, para antes de calcular a nota, salvar a resposta escolhida no nó da listResposta
-				if(!rp_btnGroup.isSelected(null)){
-					for(int i=0; i < listRadioButton.size(); i++){
-						if(listRadioButton.get(i).isSelected()){
-							listResposta.get(correArrayResposta).setrespostaAlternativa(i);
-							break;
-						}
-					}
-				}
 				
-				// Verifica qual indice da listAlternativas (dentro de Pergunta) que tem a propriedade ehCorreta igual a true
-				// e compara com o indice do arrayList listRadioButton.
-				// depois que as alternativas são embaralhadas (botão abrir prova), o indice o listRadioButton que o usuario marcou será compativel com o listAlternativa que é exibido na tela, por isso dá pra fazer essa comparação sem medo de errar.
-				for(int i=0; i < listResposta.size(); i++){
-					letraMarcada = listResposta.get(i).getrespostaAlternativa();
-					
-					for(int j=0; j < listResposta.get(i).getAlternativas().size(); j++ ){
-						if(listResposta.get(i).getAlternativas().get(j).getEhCorreta() == true){
-							letraCerta = j;
+				if(listResposta.size() > 0){
+					// Verifica Se o usuário respondeu a última pergunta, para antes de calcular a nota, salvar a resposta escolhida no nó da listResposta
+					if(!rp_btnGroup.isSelected(null)){
+						for(int i=0; i < listRadioButton.size(); i++){
+							if(listRadioButton.get(i).isSelected()){
+								listResposta.get(correArrayResposta).setrespostaAlternativa(i);
+								break;
+							}
 						}
 					}
-					if(letraMarcada > -1 && letraMarcada < 5){
-						if(letraMarcada == letraCerta){
-							questoesCertas += 1;
+					
+					// Verifica qual indice da listAlternativas (dentro de Pergunta) que tem a propriedade ehCorreta igual a true
+					// e compara com o indice do arrayList listRadioButton.
+					// depois que as alternativas são embaralhadas (botão abrir prova), o indice o listRadioButton que o usuario marcou será compativel com o listAlternativa que é exibido na tela, por isso dá pra fazer essa comparação sem medo de errar.
+					for(int i=0; i < listResposta.size(); i++){
+						letraMarcada = listResposta.get(i).getrespostaAlternativa();
+						
+						for(int j=0; j < listResposta.get(i).getAlternativas().size(); j++ ){
+							if(listResposta.get(i).getAlternativas().get(j).getEhCorreta() == true){
+								letraCerta = j;
+							}
 						}
-					}					
+						if(letraMarcada > -1 && letraMarcada < 5){
+							if(letraMarcada == letraCerta){
+								questoesCertas += 1;
+							}
+						}					
+					}
+					JOptionPane.showMessageDialog(null,"Você Acertou "+questoesCertas+" de "
+							+listResposta.size()+" questões.\n Sua Nota é: "+(double)questoesCertas*((double)10/listResposta.size()));
+					rp_btnGroup.clearSelection();
+					listResposta.clear();
+					rp_txtpnEnunciado.setText("");
+					rp_txtpnRespA.setText("");
+					rp_txtpnRespB.setText("");
+					rp_txtpnRespC.setText("");
+					rp_txtpnRespD.setText("");
+					rp_txtpnRespE.setText("");
+				}else{
+					JOptionPane.showMessageDialog(null,"Abra um arquivo de prova primeiro.");
 				}
-				JOptionPane.showMessageDialog(null,"Você Acertou "+questoesCertas+" de "
-						+listResposta.size()+" questões.\n Sua Nota é: "+(double)questoesCertas*((double)10/listResposta.size()));
 			}
 		});
 		
