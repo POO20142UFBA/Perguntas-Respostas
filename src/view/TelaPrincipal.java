@@ -33,6 +33,8 @@ import modelo.Resposta;
 
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import java.awt.Toolkit;
+import java.awt.Dialog.ModalExclusionType;
 
 
 public class TelaPrincipal extends JFrame {
@@ -178,12 +180,8 @@ public class TelaPrincipal extends JFrame {
 	 */
 		
 	public TelaPrincipal() {
-		
-	/**
-	 * 		CONFIGURAÇÃO GERAL
-	 */
-		
-		setResizable(false);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Igor\\git\\Perguntas-Respostas\\src\\notebook-and-pen.ico"));
 		setTitle("Perguntas e Respostas");
 		menuBar.setToolTipText("");
 		
@@ -194,6 +192,12 @@ public class TelaPrincipal extends JFrame {
 		mntmSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
+			}
+		});
+
+		mntmVerso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null,"Versão: 1.0.0\nDisciplina: Programação Orientada a Objertos.\nEquipe Xarás:\n  - Carla Drieli\n  - Edicarla\n  - Igor\n  - Laise\n  - Priscila");
 			}
 		});
 		mnArquivo.add(mntmSair);

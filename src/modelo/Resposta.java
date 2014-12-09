@@ -11,10 +11,9 @@ public class Resposta extends Pergunta {
 			}
 	
 	public int getrespostaAlternativa(){
-
-		
 		return this.respostaAlternativa;
 	}
+	
 	public void setrespostaAlternativa(int value){
 		this.respostaAlternativa = value;
 	}		
