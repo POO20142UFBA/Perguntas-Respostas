@@ -133,7 +133,7 @@ abstract class EscolherArquivo{
 		if(retorno == JFileChooser.APPROVE_OPTION){
 			caminhoArquivo = chooser.getSelectedFile().getAbsolutePath();
 			
-			if(!VerificaExtencao(caminhoArquivo)){
+			if(!VerificaExtensao(caminhoArquivo)){
 				caminhoArquivo = chooser.getSelectedFile().getAbsolutePath().concat("."+TipoArquivo);
 			}
 		}
@@ -141,7 +141,7 @@ abstract class EscolherArquivo{
 		return caminhoArquivo;
 	}
 
-	public boolean VerificaExtencao(String caminhoArquivo){
+	public boolean VerificaExtensao(String caminhoArquivo){
 		// Verifica se Foi digitado ou selecionado um arquivo com extencao.
 		char recebe = ' ';
 		String extencao = "";

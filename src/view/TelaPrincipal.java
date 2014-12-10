@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ import modelo.Resposta;
 
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+
 import java.awt.Toolkit;
 import java.awt.Dialog.ModalExclusionType;
 
@@ -546,6 +548,7 @@ public class TelaPrincipal extends JFrame {
 					if(listQuestionario.size() > 0){
 						arquivo.salvarArquivoQuestionario(listQuestionario);
 						cq_textPaneExibePergunta.setText("");	
+						listQuestionario.clear();
 					}else{
 						JOptionPane.showMessageDialog(null,"Adicione alguma pergunta no Questionário.");
 					}
@@ -686,6 +689,8 @@ public class TelaPrincipal extends JFrame {
 				int letraMarcada = -1;
 				int letraCerta = -1;
 				int questoesCertas = 0;
+				DecimalFormat df = new DecimalFormat("##.##");  
+			
 				
 				if(listResposta.size() > 0){
 					// Verifica Se o usuário respondeu a última pergunta, para antes de calcular a nota, salvar a resposta escolhida no nó da listResposta
@@ -716,9 +721,10 @@ public class TelaPrincipal extends JFrame {
 						}					
 					}
 					JOptionPane.showMessageDialog(null,"Você Acertou "+questoesCertas+" de "
-							+listResposta.size()+" questões.\n Sua Nota é: "+(double)questoesCertas*((double)10/listResposta.size()));
+							+listResposta.size()+" questões.\n Sua Nota é: "+df.format((double)questoesCertas*((double)10/listResposta.size())));
 					rp_btnGroup.clearSelection();
 					listResposta.clear();
+					listQuestionario.clear();
 					rp_txtpnEnunciado.setText("");
 					rp_txtpnRespA.setText("");
 					rp_txtpnRespB.setText("");
